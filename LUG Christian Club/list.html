@@ -5,55 +5,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Christian Club Online</title>
-    <link rel="stylesheet" href="list_docs/style_list.css">
-    <!-- import fonts from google -->
+    <link rel="stylesheet" href="list_docs/style_list.css"> 
+    <!-- Import fonts from Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kavoon&family=Livvic:wght@400;700&display=swap"
         rel="stylesheet">
-    <!-- import icons from google -->
+    <!-- Import icons from Google Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 
 <body>
-    <div id="list">
-        <div class="sidebar">
-            <div class="logo">
-                <img src="list_docs/media/img/logo.png" alt="Christian Club Logo">
+    <div id="list">  <!-- Main container for the page, using flexbox for layout -->
+        <div class="sidebar"> <!-- Sidebar container -->
+            <div class="logo"> <!-- Container for the logo -->
+                <img src="list_docs/media/img/logo.png" alt="Christian Club Logo"> 
             </div>
-            <div class="homebar">
+            <div class="homebar"> <!-- Container for the Home button -->
                 <button class="sidebar_button" id="home-button">
-                    <i class="material-symbols-outlined">home</i>
+                    <i class="material-symbols-outlined">home</i> 
                     <span class="button_span">Home</span>
                 </button>
             </div>
-            <div class="attendbar">
+            <div class="attendbar"> <!-- Container for the Attendance button -->
                 <button class="sidebar_button">
-                    <i class="material-icons">how_to_reg</i>
+                    <i class="material-icons">how_to_reg</i> 
                     <span class="button_span">Attendance</span>
                 </button>
             </div>
-            <div class="addmembar">
+            <div class="addmembar"> <!-- Container for the Add Members button -->
                 <button class="sidebar_button">
                     <i class="material-icons">add</i>
                     <span class="button_span">Add Members</span>
                 </button>
             </div>
         </div>
-        <div class="main">
-            <div class="top">
-                <div class="header">
+        <div class="main"> <!-- Main content area -->
+            <div class="top"> <!-- Container for header and view options -->
+                <div class="header"> <!-- Header container -->
                     <p>Members List</p>
                 </div>
-                <div class="view">
-                    <div class="search">
+                <div class="view"> <!-- Container for search bar and view switch -->
+                    <div class="search"> <!-- Search bar container -->
                         <label for="searchbar" class="search_icon">
                             <i class="material-icons">search</i>
                         </label>
                         <input type="search" name="searchbar" id="searchbar" placeholder="Search Member...">
                     </div>
-                    <div class="viewopt">
+                    <div class="viewopt"> <!-- View switch container (list/grid) -->
                         <label class="switch">
                             <input type="checkbox" />
                             <span class="slider round"></span>
@@ -67,12 +67,12 @@
                     </div>
                 </div>
             </div>
-            <div class="listcont">
-                <div class="listhead"></div>
-                <div class="listcontent">
+            <div class="listcont"> <!-- Container for the members list -->
+                <div class="listhead"></div> <!-- Placeholder for list header -->
+                <div class="listcontent"> <!-- Container for list content -->
                     <table>
                         <tr>
-                            <td id="col1"></td>
+                            <td id="col1"></td> 
                             <td id="col2"></td>
                             <td id="col3"></td>
                             <td id="col4"></td>
@@ -89,7 +89,7 @@
                 </div>
             </div>
         </div>
-        <div class="overlay_container">
+        <div class="overlay_container"> <!-- Placeholder for an overlay (not used in this code) -->
         </div>
     </div>
 </body>
