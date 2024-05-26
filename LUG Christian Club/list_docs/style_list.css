@@ -1,190 +1,213 @@
 body{
-    margin: 0;
+    margin: 0; /* Remove default body margins */
 }
+
+/* Style for Material Symbols Outlined icons */
 .material-symbols-outlined {
     font-variation-settings:
-        'FILL' 0,
-        'wght' 400,
-        'GRAD' 0,
-        'opsz' 24
+        'FILL' 0, /* Set fill to 0 (outline) */
+        'wght' 400, /* Set weight to 400 (regular) */
+        'GRAD' 0, /* Set gradient to 0 (no gradient) */
+        'opsz' 24 /* Set optical size to 24 pixels */
 }
 
+/* Style for the main container "list" */
 #list {
-    display: flex;
-    flex-direction: row;
-    height: 100dvh;
+    display: flex; /* Enable flexbox layout */
+    flex-direction: row; /* Arrange flex items in a row */
+    height: 100dvh; /* Set height to 100% of viewport height */
 }
 
+/* Style for the sidebar container */
 .sidebar {
-    flex: 2;
-    border-right: #e0e0e0 solid 0.05rem;
-    height: 100%;
+    flex: 2; /* Take up 2/12 of the container's space */
+    border-right: #e0e0e0 solid 0.05rem; /* Add a light gray right border */
+    height: 100%; /* Set height to 100% of its parent */
 }
 
+/* Style for the main content area */
 .main {
-    flex: 10;
+    flex: 10; /* Take up 10/12 of the container's space */
 }
 
+/* Style for the logo image within the sidebar */
 .sidebar .logo img {
-    width: 100%;
+    width: 100%; /* Make the image responsive to its container */
 }
 
+/* Style for sidebar buttons */
 .sidebar_button {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    background-color: white;
-    height: 3rem;
-    align-items: center;
-    border: none;
-    border-radius: 0.5rem;
-    transition: all 0.2s ease;
-    /* Transition for smoother animation */
-    cursor: pointer;
-    /* Cursor changes to pointer on hover */
+    width: 100%; /* Make buttons span the entire width */
+    display: flex; /* Enable flexbox layout */
+    flex-direction: row; /* Arrange flex items in a row */
+    background-color: white; /* White background */
+    height: 3rem; /* Fixed height */
+    align-items: center; /* Center items vertically */
+    border: none; /* Remove default button border */
+    border-radius: 0.5rem; /* Add rounded corners */
+    transition: all 0.2s ease; /* Smooth transition for hover effects */
+    cursor: pointer; /* Change cursor to pointer on hover */
 }
 
+/* Hover effect for sidebar buttons */
 .sidebar_button:hover {
-    color: #333;
-    transform: scale(1.05);
-    /* Increase size slightly on hover */
+    color: #333; /* Darker text color on hover */
+    transform: scale(1.05); /* Slightly increase size on hover */
 }
 
-
+/* Remove default padding and margin for Material Icons */
 .material-icons {
     padding: 0;
     margin: 0;
 }
 
+/* Style for the view switch (list/grid) */
 .switch {
-    position: relative;
-    display: inline-block;
-    width: 6.25rem;
-    height: 100%;
-    background-color: #f7f7f7;
-    border-radius: 7px;
+    position: relative; /* Position children relative to this container */
+    display: inline-block; /* Display as an inline block */
+    width: 6.25rem; /* Fixed width */
+    height: 100%; /* Take up full height of parent */
+    background-color: #f7f7f7; /* Light gray background */
+    border-radius: 7px; /* Rounded corners */
 }
 
+/* Hide the default checkbox input */
 .switch input {
     opacity: 0;
     width: 0;
     height: 0;
 }
 
+/* Style for the sliding part of the switch */
 .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 9%;
-    left: 4%;
-    width: 50%;
-    height: 82%;
-    background-color: white;
-    border-radius: 5px;
+    position: absolute; /* Absolute positioning within the switch container */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    top: 9%; /* Position from the top */
+    left: 4%; /* Position from the left */
+    width: 50%; /* Width relative to the switch container */
+    height: 82%; /* Height relative to the switch container */
+    background-color: white; /* White background */
+    border-radius: 5px; /* Rounded corners */
 }
 
+/* Style for icons inside the switch */
 .icon-left,
 .icon-right {
-    position: absolute;
-    top: 55%;
-    transform: translateY(-50%);
-    color: black;
-    font-size: 18px;
+    position: absolute; /* Absolute positioning within the switch container */
+    top: 50%; /* Position vertically centered */
+    transform: translateY(-50%); /* Adjust vertical position */
+    color: black; /* Black icon color */
+    font-size: 18px; /* Icon size */
 }
 
+/* Position the left icon */
 .icon-left {
     left: 16%;
 }
 
+/* Position the right icon */
 .icon-right {
     right: 16%;
 }
 
+/* Move the slider to the right when the checkbox is checked */
 input:checked+.slider {
-    left: auto;
-    right: 4%;
+    left: auto; /* Reset left position */
+    right: 4%; /* Position from the right */
 }
 
+/* Style for the view container (search bar and switch) */
 .view {
-    display: flex;
-    flex-direction: row;
-    height: 2.5rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    padding-bottom: 1rem;
-    padding-top: 1rem;
+    display: flex; /* Enable flexbox layout */
+    flex-direction: row; /* Arrange flex items in a row */
+    height: 2.5rem; /* Fixed height */
+    padding-left: 2rem; /* Left padding */
+    padding-right: 2rem; /* Right padding */
+    padding-bottom: 1rem; /* Bottom padding */
+    padding-top: 1rem; /* Top padding */
 }
 
+/* Style for the top container (header and view) */
 .top {
-    display: flex;
-    flex-direction: column;
+    display: flex; /* Enable flexbox layout */
+    flex-direction: column; /* Arrange flex items in a column */
 }
 
+/* Style for the search icon within the search bar */
 .search_icon {
-    position: relative;
-    top: 15%;
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
+    position: relative; /* Position relative to its normal position */
+    top: 15%; /* Position from the top */
+    margin-left: 0.5rem; /* Left margin */
+    margin-right: 0.5rem; /* Right margin */
 }
 
+/* Style for the search input field */
 #searchbar {
-    width: 100%;
-    height: 100%;
-    border: none;
-    outline: none;
+    width: 100%; /* Take up full width of parent */
+    height: 100%; /* Take up full height of parent */
+    border: none; /* Remove default input border */
+    outline: none; /* Remove outline on focus */
 }
 
+/* Style for the search bar container */
 .search {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    border: #e0e0e0 solid 0.1rem;
-    border-radius: 0.625rem;
-
-    margin-right: 2rem;
+    width: 100%; /* Take up full width of parent */
+    display: flex; /* Enable flexbox layout */
+    flex-direction: row; /* Arrange flex items in a row */
+    border: #e0e0e0 solid 0.1rem; /* Add a light gray border */
+    border-radius: 0.625rem; /* Add rounded corners */
+    margin-right: 2rem; /* Right margin */
 }
 
+/* Reset right position for the view options container */
 .viewopt {
     right: none;
 }
 
+/* Style for the header container */
 .header {
-    padding-top: 1rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
+    padding-top: 1rem; /* Top padding */
+    padding-left: 2rem; /* Left padding */
+    padding-right: 2rem; /* Right padding */
 }
 
+/* Remove default margins for all elements within the header */
 .header * {
     margin: 0;
 }
 
+/* Style for the placeholder text in the search bar */
 #searchbar::placeholder {
-    color: #828282;
-    font-size: medium;
-    font-family: 'Inter', sans-serif;
+    color: #828282; /* Gray placeholder text color */
+    font-size: medium; /* Medium font size */
+    font-family: 'Inter', sans-serif; /* Use Inter font */
 }
 
+/* Style for the header text */
 .header p {
-    font-family: 'Inter', sans-serif;
-    font-weight: bold;
-    font-size: x-large;
+    font-family: 'Inter', sans-serif; /* Use Inter font */
+    font-weight: bold; /* Bold font weight */
+    font-size: x-large; /* Extra large font size */
 }
 
-
+/* Style for the active home button */
 .homebar .sidebar_button {
-    background-color: #f7f7f7;
+    background-color: #f7f7f7; /* Light gray background */
 }
 
+/* Remove default borders for all elements within the sidebar */
 .sidebar * {
     border: none;
 }
 
+/* Style for the home icon (not used in HTML) */
 #home_icon {
-    color: #5F6368;
+    color: #5F6368; /* Gray icon color */
 }
 
+/* Style for button text within sidebar buttons */
 .button_span {
-    font-family: 'Inter', sans-serif;
-    font-size: medium;
-    font-weight: 500;
+    font-family: 'Inter', sans-serif; /* Use Inter font */
+    font-size: medium; /* Medium font size */
+    font-weight: 500; /* Medium font weight */
 }
-
