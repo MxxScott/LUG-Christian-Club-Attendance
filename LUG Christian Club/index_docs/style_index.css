@@ -134,7 +134,6 @@ body {
     display: grid; /* Enable grid layout */
     width: calc(100% - 2cm); /* Adjust width to avoid overlapping */
     max-width: 380px; /* Maximum width for the form */
-    font-family: cursive;
     line-height: 1.8;
 }
 
@@ -194,6 +193,10 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
     font-family: 'Inter', sans-serif; /* Use Inter font, fallback to sans-serif */
 }
+#button:hover {
+    /* Change background color on hover */
+    background-color: #A5191E; /* Darker red */
+}
 
 
 /* Ernest's changes */
@@ -208,17 +211,7 @@ body {
   }
   
   .containerB {
-    background-color: #fff;
-    padding: 50px;
-    border-radius: 12px;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
-    width: 50vw;
-    height: 580px;
     text-align: center;
-  }
-  
-  form {
-    margin-bottom: 20px;
   }
   
   #label {
@@ -235,20 +228,30 @@ body {
     border-radius: 4px;
   }
   
-  #dataform button {
-    padding: 10px 15px;
-    background-color: #B30F23;
-    color: white;
-    height: 5vh;
-    width: 12vw;
-    font-size: 14.5px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
+  #memhead{
+    font-size: xx-large;
+    font-weight: bold;
   }
 
-  #dataform button:hover {
-    background-color: #910f1e;
-  }
-  
+  #button2 {
+    /* Set background color, color, border, padding, border-radius, cursor, font size, font weight, transition, box-shadow, font-family for menu item buttons */
+    background-color: #BA2125; /* Red background */
+    color: #fff; /* White text */
+    border: none; /* Remove default border */
+    padding: 12px 24px; /* Button padding */
+    border-radius: 6px; /* Rounded corners */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    transition: background-color 0.3s; /* Smooth background color change on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    font-family: 'Inter', sans-serif; /* Use Inter font, fallback to sans-serif */
+}
+#button2:hover {
+    /* Change background color on hover */
+    background-color: #A5191E; /* Darker red */
+}
+
+#dataForm{
+    margin-top: 20px;
+}
+
 
