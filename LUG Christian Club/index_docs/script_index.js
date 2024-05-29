@@ -8,7 +8,7 @@ const listButton = document.getElementById(`list-button`);
 loginButton.addEventListener(`click`, () => {
   // Show the login form with a smooth transition
   loginForm.style.display = `grid`; // Show the form
-  loginForm.style.opacity = 0; // Start with opacity 0
+  // loginForm.style.opacity = 1; // Start with opacity 0
   loginForm.style.transition = `opacity 0.5s ease-in-out`; // Set transition effect
   setTimeout(() => { // Delay the opacity change
     loginForm.style.opacity = 1; // Set opacity to 1 after the delay
@@ -32,4 +32,4 @@ listButton.addEventListener(`click`, () => {
   window.location.href = 'list.html';
 });
 
-console.dir(document);
+// console.dir(document);
