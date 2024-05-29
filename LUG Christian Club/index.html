@@ -1,102 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Christian Club Online</title>
-    <link rel="stylesheet" href="index_docs/style_index.css" />
-    <!-- import fonts from google -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Kavoon&family=Livvic:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <!-- import icons from google -->
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-  </head>
 
-  <body>
-    <header>
-      <!-- Christian Club logo -->
-      <div class="logo">
-        <img src="index_docs/media/img/logo.png" alt="Christian Club Logo" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Christian Club Online</title>
+  <link rel="stylesheet" href="index_docs/style_index.css" />
+  <!-- import fonts from google -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Kavoon&family=Livvic:wght@400;700&display=swap"
+    rel="stylesheet" />
+  <!-- import icons from google -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+</head>
+
+<body>
+  <header>
+    <!-- Christian Club logo -->
+    <div class="logo" id="logoA">
+      <img src="index_docs/media/img/logo.png" alt="Christian Club Logo" />
+    </div>
+    <!-- Heading texts under logo -->
+    <div class="heading">
+      <h1 class="kavoon-font">Christian Club Online</h1>
+      <p class="livvic-font">Welcome to Christian Club Online</p>
+    </div>
+  </header>
+  <main>
+    <!-- Options Division -->
+    <div class="menu">
+      <!-- New Members Option Div -->
+      <div class="menu-item">
+        <img src="index_docs/media/img/newmem.png" alt="Add New Member Icon" />
+        <!--Including id to enable button -->
+        <button>Add New Member</button>
       </div>
-      <!-- Heading texts under logo -->
-      <div class="heading">
-        <h1 class="kavoon-font">Christian Club Online</h1>
-        <p class="livvic-font">Welcome to Christian Club Online</p>
+      <!-- Members List Option Div -->
+      <div class="menu-item">
+        <img src="index_docs/media/img/memlist.png" alt="Members List Icon" />
+        <button id="list-button">Members List</button>
       </div>
-    </header>
-    <main>
-      <!-- Options Division -->
-      <div class="menu">
-        <!-- New Members Option Div -->
-        <div class="menu-item">
-          <img
-            src="index_docs/media/img/newmem.png"
-            alt="Add New Member Icon"
-          />
-          <!--Including id to enable button -->
-          <button>Add New Member</button>
-        </div>
-        <!-- Members List Option Div -->
-        <div class="menu-item">
-          <img src="index_docs/media/img/memlist.png" alt="Members List Icon" />
-          <button id="list-button">Members List</button>
-        </div>
-        <!-- Login Option Div -->
-        <div class="menu-item">
-          <img src="index_docs/media/img/login.png" alt="Login Icon" />
-          <button id="login-button">Login</button>
-        </div>
+      <!-- Login Option Div -->
+      <div class="menu-item">
+        <img src="index_docs/media/img/login.png" alt="Login Icon" />
+        <button id="login-button">Login</button>
       </div>
-    </main>
-    <!-- Login overlay form -->
-    <!-- 
+    </div>
+  </main>
+  <!-- Login overlay form -->
+  <!-- 
         Kwamme this is where you need to change, 
         and put your form code here
         And make sure to go to the style_index.css file in index docs
         to edit the styling of your form    
     -->
-    <div class="forms-container" id="login-form">
-      <div class="log">
-        <!-- Exit Button for the form -->
-        <div class="exit-icon" id="exit-icon">
-          <i class="material-icons">close</i>
+  <div class="forms-container" id="login-form">
+    <div class="log">
+      <!-- Exit Button for the form -->
+      <div class="exit-icon" id="exit-icon">
+        <i class="material-icons">close</i>
+      </div>
+      <div class="container">
+
+        <!-- Christian Club logo -->
+        <div class="logo">
+          <img src="index_docs/media/img/logo.png" alt="Christian Club Logo" />
         </div>
-        <p class="form-element">Heading</p>
-        <!-- Form Input 1 -->
-        <div class="form-element">
-          <label for="input1">Input1</label>
-          <div class="control">
-            <input type="text" id="input1" placeholder="Enter Input1" />
-          </div>
+        <div class="logtitle">
+          <span>Login</span>
         </div>
-        <!-- Form Input 2 -->
-        <div class="form-element">
-          <label for="input2">Input2</label>
-          <div class="control">
-            <input type="text" id="input2" placeholder="Enter Input2" />
-          </div>
+        <div id="Login">
+          <label for="Username">Username</label><br>
+          <input type="text" id="Username" name="Username">
         </div>
-        <!-- Form Checkbox Input -->
-        <div class="form-element">
-          <div class="check-control">
-            <input type="checkbox" id="input3" />
-            <label for="input3">Input3</label>
-          </div>
+        <div class="Login">
+
+          <label for="Password"> Password </label><br>
+          <input type="password" name="password" id="password">
         </div>
-        <!-- Submit Button for the Form -->
-        <div class="form-element">
-          <button>Submit</button>
-        </div>
+        <button class="Login" type="sign-up" id="button">Sign Up</button>
       </div>
     </div>
-    <!-- end of code -->
-  </body>
-  <script type="text/javascript" src="index_docs/script_index.js"></script>
+  </div>
+  </div>
+  <!-- end of code -->
+</body>
+<script type="text/javascript" src="index_docs/script_index.js"></script>
+
 </html>
