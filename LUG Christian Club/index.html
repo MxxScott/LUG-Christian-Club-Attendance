@@ -34,7 +34,7 @@
       <div class="menu-item">
         <img src="index_docs/media/img/newmem.png" alt="Add New Member Icon" />
         <!--Including id to enable button -->
-        <button>Add New Member</button>
+        <button id="addmem-button">Add New Member</button>
       </div>
       <!-- Members List Option Div -->
       <div class="menu-item">
@@ -82,6 +82,24 @@
         <button class="Login" type="sign-up" id="button">Sign Up</button>
       </div>
     </div>
+  </div>
+  <div class="forms-container" id="addmem-form">
+    <div class="containerB">
+      <h1>Member Addition</h1><br>
+      <form id="dataForm">
+          <label for="name" id="label">Please enter the member's name.</label>
+          <input class="input" type="text" id="name" name="name" required><br><br>
+          <label for="text" id="label">Please enter their role within the group.</label>
+          <input class="input" type="text" id="role" name="role" required><br><br>
+          <label for="text" id="label">Please enter their programme of study.</label>
+          <input class="input" type="text" id="studyProgramme" name="studyProgramme" required><br><br>
+          <label for="text" id="label">Please enter their university level.</label>
+          <input class="input" type="text" id="level" name="level" required><br><br>
+          <label for="text" id="label">Please enter their WhatsApp contact details.</label>
+          <input class="input" type="text" id="contact" name="contact" required><br><br>
+          <button type="submit">Submit</button>
+      </form>
+  </div>
   </div>
   </div>
   <!-- end of code -->

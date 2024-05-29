@@ -1,6 +1,8 @@
 // Select the login button, login form, exit logo, and list button elements
 const loginButton = document.getElementById(`login-button`);
 const loginForm = document.getElementById(`login-form`);
+const addmemButton = document.getElementById(`addmem-button`);
+const addmemForm = document.getElementById(`addmem-form`);
 const exitLogo = document.getElementById(`exit-icon`);
 const listButton = document.getElementById(`list-button`);
 
@@ -22,7 +24,7 @@ exitLogo.addEventListener(`click`, () => {
   loginForm.style.transition = `opacity 0.5s ease-in-out`; // Set transition effect
   setTimeout(() => { // Delay the opacity change
     loginForm.style.opacity = 0; // Set opacity to 0 after the delay
-    loginForm.style.display = `none`; // Hide the form after the delay
+    loginForm.style.display = `none`; // Hide the form after the delays
   }, 10); // 10 milliseconds delay
 });
 
@@ -32,4 +34,13 @@ listButton.addEventListener(`click`, () => {
   window.location.href = 'list.html';
 });
 
+addmemButton.addEventListener(`click`, () => {
+  // Show the addMem form with a smooth transition
+  addmemForm.style.display = `grid`; // Show the form
+  // addMemForm.style.opacity = 1; // Start with opacity 0
+  addmemForm.style.transition = `opacity 0.5s ease-in-out`; // Set transition effect
+  setTimeout(() => { // Delay the opacity change
+    loginForm.style.opacity = 1; // Set opacity to 1 after the delay
+  }, 10); // 10 milliseconds delay
+});
 // console.dir(document);

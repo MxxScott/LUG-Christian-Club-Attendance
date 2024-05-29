@@ -196,6 +196,59 @@ body {
 }
 
 
+/* Ernest's changes */
+#addmemform {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  .containerB {
+    background-color: #fff;
+    padding: 50px;
+    border-radius: 12px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+    width: 50vw;
+    height: 580px;
+    text-align: center;
+  }
+  
+  form {
+    margin-bottom: 20px;
+  }
+  
+  #label {
+    display: block;
+    margin-bottom: 5px;
+    text-align: left;
+  }
+  
+  .input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  #dataform button {
+    padding: 10px 15px;
+    background-color: #B30F23;
+    color: white;
+    height: 5vh;
+    width: 12vw;
+    font-size: 14.5px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
 
-
+  #dataform button:hover {
+    background-color: #910f1e;
+  }
+  
 
