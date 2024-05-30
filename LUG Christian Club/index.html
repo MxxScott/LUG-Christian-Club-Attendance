@@ -49,7 +49,7 @@
   </main>
   <!-- Login overlay form -->
   <!-- 
-        Kwamme this is where you need to change, 
+        Kwame this is where you need to change, 
         and put your form code here
         And make sure to go to the style_index.css file in index docs
         to edit the styling of your form    
@@ -82,6 +82,7 @@
       </div>
     </div>
   </div>
+  <!-- Ernests form -->
   <div class="forms-container" id="addmem-form">
     <div class="add">
       <!-- Exit Button for the form -->
@@ -91,29 +92,34 @@
       <div class="containerB">
         <span id="memhead">Member Addition</span>
         <form id="dataForm">
-          <label for="name" id="label">Please enter the member's name.</label>
+          <label for="name" id="label">Please enter member's name.</label>
+          <!-- give id names that are more unique to be barely used anywhere in our code base -->
           <input class="input" type="text" id="name" name="name" required>
           <br>
-          <label for="role" id="label">Please enter their role within the group.</label>
+          <label for="role" id="label">Please enter role within the group.</label>
           <input class="input" type="text" id="role" name="role" required>
           <br>
-          <label for="studyProgramme" id="label">Please enter their programme of study.</label>
+          <label for="studyProgramme" id="label">Please enter programme of study.</label>
           <input class="input" type="text" id="studyProgramme" name="studyProgramme" required>
           <br>
-          <label for="level" id="label">Please enter their university level.</label>
+          <label for="level" id="label">Please enter university level.</label>
           <input class="input" type="text" id="level" name="level" required>
           <br>
-          <label for="contact" id="label">Please enter their WhatsApp contact details.</label>
+          <label for="contact" id="label">Please enter member whatsApp contact details.</label>
           <input class="input" type="text" id="contact" name="contact" required>
           <br>
-          <button type="submit" class="submit_button" id="button">Submit</button>
+          <button type="submit" class="submit_button" id="mem-sub-button">Submit</button>
         </form>
       </div>
     </div>
   </div>
   </div>
   <!-- end of code -->
+  <!-- <script type="text/javascript" src="index_docs/script_index.js"></script> -->
+  <!-- including  firbase JS SDK-->
+  <script src="https://www.gstatic.com/firebasejs/10.12.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.1/firebase-firestore-compat.js"></script>
+  <script type="module" src="firebase.js"></script>
 </body>
-<script type="text/javascript" src="index_docs/script_index.js"></script>
 
 </html>
