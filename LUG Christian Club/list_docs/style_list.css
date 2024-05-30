@@ -43,7 +43,6 @@ body{
     background-color: white; /* White background */
     height: 3rem; /* Fixed height */
     align-items: center; /* Center items vertically */
-    border: none; /* Remove default button border */
     border-radius: 0.5rem; /* Add rounded corners */
     transition: all 0.2s ease; /* Smooth transition for hover effects */
     cursor: pointer; /* Change cursor to pointer on hover */
@@ -53,6 +52,7 @@ body{
 .sidebar_button:hover {
     color: #333; /* Darker text color on hover */
     transform: scale(1.05); /* Slightly increase size on hover */
+    border-right: #e0e0e0 solid 0.05rem;
 }
 
 /* Remove default padding and margin for Material Icons */
