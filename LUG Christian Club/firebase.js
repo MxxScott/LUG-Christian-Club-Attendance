@@ -1,28 +1,28 @@
-  // firebase configurations
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
-  //   adding firestore 
-  import {getFirestore, collection, addDoc} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
+// firebase configurations
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
+//   adding firestore 
+import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyDMVTwr45d0xPK5He6pv1bibApte1flpds",
-    authDomain: "christian-club-online.firebaseapp.com",
-    projectId: "christian-club-online",
-    storageBucket: "christian-club-online.appspot.com",
-    messagingSenderId: "599223982319",
-    appId: "1:599223982319:web:2aa246d44bae1ddc6ca31a",
-    measurementId: "G-PSCB7CHW3N"
-  };
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyDMVTwr45d0xPK5He6pv1bibApte1flpds",
+  authDomain: "christian-club-online.firebaseapp.com",
+  projectId: "christian-club-online",
+  storageBucket: "christian-club-online.appspot.com",
+  messagingSenderId: "599223982319",
+  appId: "1:599223982319:web:2aa246d44bae1ddc6ca31a",
+  measurementId: "G-PSCB7CHW3N"
+};
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-  const db = getFirestore(app);
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+const db = getFirestore(app);
 
 // seclecting necessary elements
 const loginBtn = document.getElementById(`button2`);
@@ -45,13 +45,9 @@ const exitLoginIcon = document.getElementById(`exit-login-icon`);
 const exitAddMemIcon = document.getElementById(`exit-addmem-icon`);
 const listButton = document.getElementById(`list-button`);
 
- // List Home Button Navigation
-const HomeNav = document.getElementById(`home-button`);
-console.log(HomeNav)
-console.log(loginButton)
+
 // creating a function for authentication
-function authenUser(firstVal, secondVal)
-{
+function authenUser(firstVal, secondVal) {
   const first = `frema@sec.lug.club`;
   const second = `logMeIntoIt`;
 
@@ -70,14 +66,14 @@ loginButton.addEventListener(`click`, () => {
     loginForm.style.opacity = 1; // Set opacity to 1 after the delay
   }, 10); // 10 milliseconds delay
 
-  
+
 });
 
 // Event listener for the addmem button
 addmemButton.addEventListener(`click`, () => {
   // getting authData from localStorage
   const userDataCol = JSON.parse(localStorage.getItem("listData"))
-    if (userDataCol !== null && authenUser(userDataCol.firstVal, userDataCol.secondVal)){
+  if (userDataCol !== null && authenUser(userDataCol.firstVal, userDataCol.secondVal)) {
     // the form for the membership form can now be shown
     // Show the addMem form with a smooth transition
     addmemForm.style.display = `grid`; // Show the form
@@ -85,7 +81,7 @@ addmemButton.addEventListener(`click`, () => {
     setTimeout(() => { // Delay the opacity change
       addmemForm.style.opacity = 1; // Set opacity to 1 after the delay
     }, 10); // 10 milliseconds delay
-  }else{
+  } else {
     alert("PLease Log in first");
     window.location.href = `index.html`;
   }
@@ -117,61 +113,56 @@ exitAddMemIcon.addEventListener(`click`, () => {
 listButton.addEventListener(`click`, () => {
   // getting authData from localStorage
   const userDataCol = JSON.parse(localStorage.getItem("listData"))
-  if (userDataCol !== null && authenUser(userDataCol.firstVal, userDataCol.secondVal)){
+  if (userDataCol !== null && authenUser(userDataCol.firstVal, userDataCol.secondVal)) {
     // Redirect to the list.html page
     window.location.href = 'list.html';
-  }else{
+  } else {
     alert("PLease Log in first");
   }
 });
 
 // adding a member to the database
-addMemSubBtn.addEventListener('click', async(e)=>{
-    // making sure empty fields are not submited to the database
-    e.preventDefault();
-    // getting the input field values all in one object
-    const memberData = {
-        name: name.value,
-        role: role.value,
-        course: studyProgramme.value,
-        level: level.value,
-        contact: contact.value,
-        attendance: {}
-    }
+addMemSubBtn.addEventListener('click', async (e) => {
+  // making sure empty fields are not submited to the database
+  e.preventDefault();
+  // getting the input field values all in one object
+  const memberData = {
+    name: name.value,
+    role: role.value,
+    course: studyProgramme.value,
+    level: level.value,
+    contact: contact.value,
+    attendance: {}
+  }
 
-    try {
-        // Creating a collection of members and adding each member details as a document
-        const docRef = await addDoc(collection(db, "members"), memberData)
-        alert(`${memberData.name} Added successfully`);
-    } catch (error) {
-        alert(JSON.stringify(error));
-    }
-    // console.log(name.value)
-    // alert(JSON.stringify(name.value));
+  try {
+    // Creating a collection of members and adding each member details as a document
+    const docRef = await addDoc(collection(db, "members"), memberData)
+    alert(`${memberData.name} Added successfully`);
+  } catch (error) {
+    alert(JSON.stringify(error));
+  }
+  // console.log(name.value)
+  // alert(JSON.stringify(name.value));
 })
+
 // login in
-loginBtn.addEventListener(`click`, ()=>{
+loginBtn.addEventListener(`click`, () => {
 
-    // getting the form field values
-    const firstVal = userName.value;
-    const secondVal = userPassword.value;
-    
-    if (authenUser(firstVal, secondVal)){
-      // if it passes the authentication, then the list page will load
-      window.location.href = 'list.html';
-      // keeping the data into localStorage
-      const data = {firstVal, secondVal};
-      localStorage.setItem(`listData`, JSON.stringify(data));
-  
-      loginForm.style.opacity = 0; 
-      loginForm.style.display = `none`; 
-    }else{
-      alert("Please Enter a valid authenticationn details");
-    }
-  })
+  // getting the form field values
+  const firstVal = userName.value;
+  const secondVal = userPassword.value;
 
-  HomeNav.addEventListener(`click`, () => {
-    alert("clicked");
-    // Redirect to the index.html page
-    window.location.href = `index.html`;
-  });
+  if (authenUser(firstVal, secondVal)) {
+    // if it passes the authentication, then the list page will load
+    window.location.href = 'list.html';
+    // keeping the data into localStorage
+    const data = { firstVal, secondVal };
+    localStorage.setItem(`listData`, JSON.stringify(data));
+
+    loginForm.style.opacity = 0;
+    loginForm.style.display = `none`;
+  } else {
+    alert("Please Enter a valid authenticationn details");
+  }
+})

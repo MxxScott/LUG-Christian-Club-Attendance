@@ -61,61 +61,6 @@ body{
     margin: 0;
 }
 
-/* Style for the view switch (list/grid) */
-.switch {
-    position: relative; /* Position children relative to this container */
-    display: inline-block; /* Display as an inline block */
-    width: 6.25rem; /* Fixed width */
-    height: 100%; /* Take up full height of parent */
-    background-color: #f7f7f7; /* Light gray background */
-    border-radius: 7px; /* Rounded corners */
-}
-
-/* Hide the default checkbox input */
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-/* Style for the sliding part of the switch */
-.slider {
-    position: absolute; /* Absolute positioning within the switch container */
-    cursor: pointer; /* Change cursor to pointer on hover */
-    top: 9%; /* Position from the top */
-    left: 4%; /* Position from the left */
-    width: 50%; /* Width relative to the switch container */
-    height: 82%; /* Height relative to the switch container */
-    background-color: white; /* White background */
-    border-radius: 5px; /* Rounded corners */
-}
-
-/* Style for icons inside the switch */
-.icon-left,
-.icon-right {
-    position: absolute; /* Absolute positioning within the switch container */
-    top: 50%; /* Position vertically centered */
-    transform: translateY(-50%); /* Adjust vertical position */
-    color: black; /* Black icon color */
-    font-size: 18px; /* Icon size */
-}
-
-/* Position the left icon */
-.icon-left {
-    left: 16%;
-}
-
-/* Position the right icon */
-.icon-right {
-    right: 16%;
-}
-
-/* Move the slider to the right when the checkbox is checked */
-input:checked+.slider {
-    left: auto; /* Reset left position */
-    right: 4%; /* Position from the right */
-}
-
 /* Style for the view container (search bar and switch) */
 .view {
     display: flex; /* Enable flexbox layout */
@@ -127,6 +72,57 @@ input:checked+.slider {
     padding-top: 1rem; /* Top padding */
 }
 
+/* Style for the view buttons */
+.view-button {
+    display: flex; /* Enable flexbox layout */
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+    width: 50%; /* Take up half the width */
+    height: 100%; /* Fixed height */
+    border: none; /* Remove default button border */
+    border-radius: 0.5rem; /* Add rounded corners */
+    background-color: #f7f7f7; /* Light gray background */
+    color: black; /* Black text color */
+    font-size: 18px; /* Icon size */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    transition: background-color 0.2s ease; /* Smooth transition for color change */
+  }
+
+/* Style for the active view button */
+.view-button.active {
+    background-color: white; /* White background when active */
+  }
+  
+  /* Style for the view icons */
+  .view-button .material-icons {
+    font-size: 18px; /* Icon size */
+  }
+  
+  /* Remove default margins for the view buttons */
+  .view-button * {
+    margin: 0;
+  }
+  
+  /* Style for the view options container */
+  .viewopt {
+    display: flex; /* Enable flexbox layout */
+    width: 6.25rem; /* Take up full width */
+    justify-content: space-between; /* Space buttons evenly */
+    background-color: #f7f7f7; /* Light gray background */
+    padding: 0.2rem;
+    border-radius: 0.6rem; /* Add rounded corners */
+  }
+  
+  /* Remove default margins for the view options container */
+  .viewopt * {
+    margin: 0;
+  }
+  
+  /* Remove the default switch */
+  .switch {
+    display: none; /* Hide the default switch */
+  }
+  
 /* Style for the top container (header and view) */
 .top {
     display: flex; /* Enable flexbox layout */
@@ -211,3 +207,72 @@ input:checked+.slider {
     font-size: medium; /* Medium font size */
     font-weight: 500; /* Medium font weight */
 }
+
+/* Style for the list container */
+.listcont {
+    display: flex; /* Enable flexbox layout */
+    flex-direction: column; /* Arrange flex items in a column */
+    height: calc(100% - 5.5rem); /* Set height to remaining space */
+    padding-left: 2rem; /* Left padding */
+    padding-right: 2rem; /* Right padding */
+    overflow-y: auto; /* Enable vertical scroll */
+}
+
+/* Style for the list header */
+.listhead {
+    display: flex; /* Enable flexbox layout */
+    flex-direction: row; /* Arrange flex items in a row */
+    height: 2.5rem; /* Fixed height */
+}
+
+/* Style for the list content */
+.listcontent {
+    display: flex; /* Enable flexbox layout */
+    flex-direction: column; /* Arrange flex items in a column */
+    height: calc(100% - 2.5rem); /* Set height to remaining space */
+}
+
+/* Style for the table within the list */
+table {
+    width: 100%; /* Take up full width of parent */
+    border-collapse: collapse; /* Remove gaps between table cells */
+    border-radius: 0.625rem; /* Add rounded corners */
+    overflow: hidden; /* Hide content that overflows */
+    font-family: 'Inter', sans-serif; /* Use Inter font */
+}
+
+/* Style for table rows */
+tr {
+    height: 2.5rem; /* Fixed row height */
+}
+
+/* Style for table cells */
+td {
+    text-align: left; /* Align text to the left */
+    padding: 0 1rem; /* Add padding */
+    border-bottom: #e0e0e0 solid 0.05rem; /* Add a light gray bottom border */
+}
+
+/* Style for the overlay container (not used in this code) */
+.overlay_container {
+    position: fixed; /* Fixed positioning */
+    top: 0; /* Position from the top */
+    left: 0; /* Position from the left */
+    width: 100%; /* Take up full width */
+    height: 100%; /* Take up full height */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    display: none; /* Initially hidden */
+    z-index: 100; /* Ensure it's on top of other elements */
+}
+
+.col1 {
+    color: #828282;
+    width: 15%;
+}
+
+.first_row{
+    font-family: 'Inter', sans-serif; /* Use Inter font */
+    font-weight: bold; /* Bold font weight */
+    font-size: large; /* Extra large font size */
+}
+

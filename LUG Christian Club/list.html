@@ -34,7 +34,7 @@
         </div>
         <div class="homebar">
           <!-- Container for the Home button -->
-          <button class="sidebar_button" id="home-button">
+          <button class="sidebar_button" id="home-button-list">
             <i class="material-symbols-outlined">home</i>
             <span class="button_span">Home</span>
           </button>
@@ -76,19 +76,14 @@
                 placeholder="Search Member..."
               />
             </div>
-            <div class="viewopt">
-              <!-- View switch container (list/grid) -->
-              <label class="switch">
-                <input type="checkbox" />
-                <span class="slider round"></span>
-                <span class="icon-left">
+            <div class="viewopt"> <!-- View switch container (list/grid) -->
+              <button class="view-button active" id="list-view">
                   <i class="material-icons">list</i>
-                </span>
-                <span class="icon-right">
+              </button>
+              <button class="view-button" id="grid-view">
                   <i class="material-icons">grid_view</i>
-                </span>
-              </label>
-            </div>
+              </button>
+          </div>
           </div>
         </div>
         <div class="listcont">
@@ -98,21 +93,21 @@
           <div class="listcontent">
             <!-- Container for list content -->
             <table>
-              <tr>
-                <td id="col1"></td>
-                <td id="col2"></td>
-                <td id="col3"></td>
-                <td id="col4"></td>
-                <td id="col5"></td>
+              <tr class="first_row">
+                  <td class="col1">Member ID</td> 
+                  <td class="col2">Name</td>
+                  <td class="col3">Role</td>
+                  <td class="col4">Attendance</td>
+                  <td class="col15"></td>
               </tr>
               <tr>
-                <td id="col1"></td>
-                <td id="col2"></td>
-                <td id="col3"></td>
-                <td id="col4"></td>
-                <td id="col5"></td>
+                  <td class="col1"></td>
+                  <td class="col2"></td>
+                  <td class="col3"></td>
+                  <td class="col4"></td>
+                  <td class="col5"></td>
               </tr>
-            </table>
+          </table>
           </div>
         </div>
       </div>
@@ -123,6 +118,8 @@
     <!-- including  firbase JS SDK-->
   <!-- <script src="https://www.gstatic.com/firebasejs/10.12.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.1/firebase-firestore-compat.js"></script> -->
-  <script type="module" src="firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.1/firebase-firestore-compat.js"></script>
+  <script type="module" src="list_docs/script_list.js"></script>
   </body>
 </html>

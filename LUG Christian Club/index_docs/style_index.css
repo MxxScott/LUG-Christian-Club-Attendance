@@ -181,7 +181,7 @@ padding: 20px;
   font-family: 'Kavoon', sans-serif;
   font-size: x-large;
 }
-#button {
+#mem-sub-button {
   /* Set background color, color, border, padding, border-radius, cursor, font size, font weight, transition, box-shadow, font-family for menu item buttons */
   background-color: #BA2125; /* Red background */
   color: #fff; /* White text */
@@ -194,7 +194,7 @@ padding: 20px;
   font-family: 'Inter', sans-serif; /* Use Inter font, fallback to sans-serif */
 }
 
-#button:hover {
+#mem-sub-button:hover {
   /* Change background color on hover */
   background-color: #A5191E; /* Darker red */
 }
