@@ -1,7 +1,7 @@
 /* General Styling */
 body {
   /* Set font, background color, and layout for the entire page */
-  font-family: "Inter", sans-serif; /* Use Inter font, fallback to sans-serif */
+  font-family: 'Inter', sans-serif; /* Use Inter font, fallback to sans-serif */
   background-color: #fff; /* White background */
   display: flex; /* Enable flexbox layout */
   flex-direction: column; /* Arrange elements vertically */
@@ -16,7 +16,6 @@ body {
   /* Set width, max-width, margin, and text alignment for the logo container */
   width: 300px; /* Fixed width, but can shrink to 100% if necessary */
   max-width: 100%; /* Prevent logo from exceeding its container */
-  margin-bottom: 30px; /* Add margin below the logo */
   text-align: center; /* Center logo horizontally */
 }
 
@@ -38,7 +37,7 @@ body {
 /* Kavoon Font Styling */
 .kavoon-font {
   /* Set font family, size, weight, and margin for the Kavoon font */
-  font-family: "Kavoon", sans-serif; /* Use Kavoon font, fallback to sans-serif */
+  font-family: 'Kavoon', sans-serif; /* Use Kavoon font, fallback to sans-serif */
   font-size: 36px; /* Large font size */
   font-weight: 700; /* Bold weight */
   margin: 0; /* Remove default margin */
@@ -47,7 +46,7 @@ body {
 /* Livvic Font Styling */
 .livvic-font {
   /* Set font family, size, weight, and color for the Livvic font */
-  font-family: "Livvic", sans-serif; /* Use Livvic font, fallback to sans-serif */
+  font-family: 'Livvic', sans-serif; /* Use Livvic font, fallback to sans-serif */
   font-size: 20px; /* Standard font size */
   font-weight: normal; /* Normal weight */
   color: #828282; /* Gray color */
@@ -89,7 +88,7 @@ body {
 /* Menu Item Button Styling */
 .menu-item button {
   /* Set background color, color, border, padding, border-radius, cursor, font size, font weight, transition, box-shadow, font-family for menu item buttons */
-  background-color: #ba2125; /* Red background */
+  background-color: #BA2125; /* Red background */
   color: #fff; /* White text */
   border: none; /* Remove default border */
   padding: 12px 24px; /* Button padding */
@@ -99,13 +98,13 @@ body {
   font-weight: bold; /* Bold text */
   transition: background-color 0.3s; /* Smooth background color change on hover */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
-  font-family: "Inter", sans-serif; /* Use Inter font, fallback to sans-serif */
+  font-family: 'Inter', sans-serif; /* Use Inter font, fallback to sans-serif */
 }
 
 /* Menu Item Button Hover Styling */
 .menu-item button:hover {
   /* Change background color on hover */
-  background-color: #a5191e; /* Darker red */
+  background-color: #A5191E; /* Darker red */
 }
 
 /* Forms Container Styling */
@@ -135,6 +134,7 @@ body {
   display: grid; /* Enable grid layout */
   width: calc(100% - 2cm); /* Adjust width to avoid overlapping */
   max-width: 380px; /* Maximum width for the form */
+  line-height: 1.8;
 }
 
 /* Forms Container Log Div Styling */
@@ -151,6 +151,106 @@ body {
   text-align: right; /* Align text to the right */
 }
 
-.form-element {
+.Login{
   margin-bottom: 1.25cm;
+}
+
+
+/* Kwame's changes */
+
+#container
+{
+margin: 60px auto;
+max-width: 400px;
+padding: 20px;
+}
+
+
+.Login
+{
+  font-family: cursive;
+  
+}
+
+#logoA{
+  margin-bottom: 30px;
+}
+
+.logtitle *{
+  margin: none;
+  font-family: 'Kavoon', sans-serif;
+  font-size: x-large;
+}
+#button {
+  /* Set background color, color, border, padding, border-radius, cursor, font size, font weight, transition, box-shadow, font-family for menu item buttons */
+  background-color: #BA2125; /* Red background */
+  color: #fff; /* White text */
+  border: none; /* Remove default border */
+  padding: 12px 24px; /* Button padding */
+  border-radius: 6px; /* Rounded corners */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  transition: background-color 0.3s; /* Smooth background color change on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  font-family: 'Inter', sans-serif; /* Use Inter font, fallback to sans-serif */
+}
+
+#button:hover {
+  /* Change background color on hover */
+  background-color: #A5191E; /* Darker red */
+}
+
+
+/* Ernest's changes */
+#addmemform {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.containerB {
+  text-align: center;
+}
+
+#label {
+  display: block;
+  margin-bottom: 5px;
+  text-align: left;
+}
+
+.input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#memhead{
+  font-size: xx-large;
+  font-weight: bold;
+}
+
+#button2 {
+  /* Set background color, color, border, padding, border-radius, cursor, font size, font weight, transition, box-shadow, font-family for menu item buttons */
+  background-color: #BA2125; /* Red background */
+  color: #fff; /* White text */
+  border: none; /* Remove default border */
+  padding: 12px 24px; /* Button padding */
+  border-radius: 6px; /* Rounded corners */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  transition: background-color 0.3s; /* Smooth background color change on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  font-family: 'Inter', sans-serif; /* Use Inter font, fallback to sans-serif */
+}
+#button2:hover {
+  /* Change background color on hover */
+  background-color: #A5191E; /* Darker red */
+}
+
+#dataForm{
+  margin-top: 20px;
 }

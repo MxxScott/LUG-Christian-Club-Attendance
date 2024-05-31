@@ -36,7 +36,7 @@ const level = document.getElementById(`level`);
 const contact = document.getElementById(`contact`);
 
 // Select the login button, login form, exit logo, and list button elements
-const loginButton = document.getElementById(`login-button`);
+const loginButton = document.getElementById(`login-button-index`);
 const loginForm = document.getElementById(`login-form`);
 const addmemButton = document.getElementById(`addmem-button`);
 const addmemForm = document.getElementById(`addmem-form`);
@@ -45,6 +45,10 @@ const exitLoginIcon = document.getElementById(`exit-login-icon`);
 const exitAddMemIcon = document.getElementById(`exit-addmem-icon`);
 const listButton = document.getElementById(`list-button`);
 
+ // List Home Button Navigation
+const HomeNav = document.getElementById(`home-button`);
+console.log(HomeNav)
+console.log(loginButton)
 // creating a function for authentication
 function authenUser(firstVal, secondVal)
 {
@@ -144,8 +148,7 @@ addMemSubBtn.addEventListener('click', async(e)=>{
     }
     // console.log(name.value)
     // alert(JSON.stringify(name.value));
-}) 
-
+})
 // login in
 loginBtn.addEventListener(`click`, ()=>{
 
@@ -166,4 +169,9 @@ loginBtn.addEventListener(`click`, ()=>{
       alert("Please Enter a valid authenticationn details");
     }
   })
-  
+
+  HomeNav.addEventListener(`click`, () => {
+    alert("clicked");
+    // Redirect to the index.html page
+    window.location.href = `index.html`;
+  });

@@ -56,7 +56,7 @@
       <!-- Login Option Div -->
       <div class="menu-item">
         <img src="index_docs/media/img/login.png" alt="Login Icon">
-        <button id="login-button">Login</button>
+        <button id="login-button-index">Login</button>
       </div>
     </div>
   </main>
@@ -77,24 +77,7 @@
         <!-- Christian Club logo -->
         <div class="logo">
           <img src="index_docs/media/img/logo.png" alt="Christian Club Logo">
-  <div class="forms-container" id="login-form">
-    <div class="log">
-      <!-- Exit Button for the form -->
-      <div class="exit-icon">
-        <i class="material-icons" id="exit-login-icon">close</i>
-      </div>
-      <div class="container">
-        <!-- Christian Club logo -->
-        <div class="logo">
-          <img src="index_docs/media/img/logo.png" alt="Christian Club Logo">
         </div>
-        <div class="logtitle">
-          <span>Login</span>
-        </div>
-        <div id="Login">
-          <label for="Username">Username</label>
-          <br>
-          <input type="text" id="Username" name="Username">
         <div class="logtitle">
           <span>Login</span>
         </div>
@@ -107,15 +90,12 @@
           <label for="password"> Password</label>
           <br>
           <input type="password" name="password" id="password">
-        <div class="Login">
-          <label for="password"> Password</label>
-          <br>
-          <input type="password" name="password" id="password">
         </div>
-        <button class="Login" type="submit" id="button2">Sign Up</button>
+        <button class="Login" type="submit" id="button2">Login</button>
       </div>
     </div>
   </div>
+
   <!-- Ernests form -->
   <div class="forms-container" id="addmem-form">
     <div class="add">
@@ -126,33 +106,33 @@
       <div class="containerB">
         <span id="memhead">Member Addition</span>
         <form id="dataForm">
-          <label for="name" id="label">Please enter member's name.</label>
-          <!-- give id names that are more unique to be barely used anywhere in our code base -->
+          <label for="name" id="label">Please enter the member's name.</label>
           <input class="input" type="text" id="name" name="name" required>
           <br>
-          <label for="role" id="label">Please enter role within the group.</label>
+          <label for="role" id="label">Please enter their role within the group.</label>
           <input class="input" type="text" id="role" name="role" required>
           <br>
-          <label for="studyProgramme" id="label">Please enter programme of study.</label>
+          <label for="studyProgramme" id="label">Please enter their programme of study.</label>
           <input class="input" type="text" id="studyProgramme" name="studyProgramme" required>
           <br>
-          <label for="level" id="label">Please enter university level.</label>
+          <label for="level" id="label">Please enter their university level.</label>
           <input class="input" type="text" id="level" name="level" required>
           <br>
-          <label for="contact" id="label">Please enter member whatsApp contact details.</label>
+          <label for="contact" id="label">Please enter their WhatsApp contact details.</label>
           <input class="input" type="text" id="contact" name="contact" required>
           <br>
-          <button type="submit" class="submit_button" id="mem-sub-button">Submit</button>
+          <button type="submit" class="submit_button" id="button">Submit</button>
         </form>
       </div>
     </div>
   </div>
   </div>
+
   <!-- end of code -->
   <!-- <script type="text/javascript" src="index_docs/script_index.js"></script> -->
   <!-- including  firbase JS SDK-->
   <script src="https://www.gstatic.com/firebasejs/10.12.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.1/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.1/firebase-firestore-compat.js"></script>
   <script type="module" src="firebase.js"></script>
 </body>
 
