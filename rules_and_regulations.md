@@ -1,10 +1,17 @@
 ### CSS rules
-* All Id names should be in the format: example-id
 
-* All Class names should be in the format: eacample_class
+- All Id names should be in the format: example-id
 
-* All important divisions should be giving id, however not all elements should have id's and classes should be more dominant than id's in every document
+- All Class names should be in the format: eacample_class
 
-* draw attention anytime you want to make any changes to the codebase
+- All important divisions should be giving id, however not all elements should have id's and classes should be more dominant than id's in every document
 
-* always remember to make pull request before you start making changes to the codebase
+- We will making use of css variables, so that we can switch between dark mode and light mode, so check it out
+
+### general regulations
+
+- the first to do when ever you plan on touching the codebase is to make a git pull request
+
+- draw attention anytime you want to make any changes to the codebase
+
+- always remember to make pull request before you start making changes to the codebase(Repeating it because it very important)

@@ -3,7 +3,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
 //   adding firestore 
-import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"
+import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -25,9 +25,13 @@ const analytics = getAnalytics(app);
 const db = getFirestore(app);
 
 
+//LIST-PAGE JAVASCRIPT
+// importing neccessary functions
+import { createEle } from "../import_func.js";
 // List Home Button Navigation
 const HomeNav = document.getElementById(`home-button-list`);
-
+// getting the table element
+const listTable = document.getElementById(`our-list-table`);
 HomeNav.addEventListener(`click`, () => {
     // Redirect to the index.html page
     window.location.href = `index.html`;
@@ -63,3 +67,36 @@ gridViewButton.addEventListener('mouseup', () => {
   inactive = active;
   active = inactivetemp;
 });
+
+
+// loading member list from database and previewing on the screen for users to see
+document.addEventListener(`DOMContentLoaded`, async()=>{
+  const membersQuery = await getDocs(collection(db, "members"));
+  const documents = membersQuery.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+
+  // creating elements for each member
+  documents.forEach((mem) =>{
+    const trEle = createEle("tr", "first_row");
+    listTable.append(trEle);
+    const td1 = createEle("td", "col1");
+    const td2 = createEle("td", "col2");
+    const td3 = createEle("td", "col3");
+    const td4 = createEle("td", "col4");
+    const td5 = createEle("td", "col5");
+    // adding innertext values
+    td1.textContent = `${mem.name}`;
+    td2.textContent = `${mem.course}`;
+    td3.textContent = `${mem.role}`;
+    td4.textContent = `${mem.contact}`;
+    //the attendance is an object, so i am just printing the lenght of the object
+    td5.textContent = `${Object.keys(mem.attendance).length}`;
+    // appending to tr as children
+    trEle.append(td1)
+    trEle.append(td2)
+    trEle.append(td3)
+    trEle.append(td4)
+    trEle.append(td5)
+
+  })
+
+})
