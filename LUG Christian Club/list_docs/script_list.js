@@ -32,6 +32,8 @@ import { createEle } from "../import_func.js";
 const HomeNav = document.getElementById(`home-button-list`);
 // getting the table element
 const listTable = document.getElementById(`our-list-table`);
+// getting the attendance button
+const attBtn = document.getElementById("sidebar_button");
 HomeNav.addEventListener(`click`, () => {
     // Redirect to the index.html page
     window.location.href = `index.html`;
@@ -68,12 +70,13 @@ gridViewButton.addEventListener('mouseup', () => {
   active = inactivetemp;
 });
 
-
+// **************************************************************
 // loading member list from database and previewing on the screen for users to see
+let membersQuery;
+let documents;
 document.addEventListener(`DOMContentLoaded`, async()=>{
-  const membersQuery = await getDocs(collection(db, "members"));
-  const documents = membersQuery.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-
+  membersQuery = await getDocs(collection(db, "members"));
+  documents = membersQuery.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
   // creating elements for each member
   documents.forEach((mem) =>{
     const trEle = createEle("tr", "first_row");
@@ -98,5 +101,48 @@ document.addEventListener(`DOMContentLoaded`, async()=>{
     trEle.append(td5)
 
   })
+
+})
+
+// ************************************************
+// creating the attendance form dynamically
+attBtn.addEventListener(`click`, ()=>{
+  // creating a form for making attendance when the attendance btn is clicked
+  const mainDiv = document.getElementById("main_section");
+  const attFormContainer = createEle("div", "att-form-container");
+  mainDiv.append(attFormContainer);
+
+  const datePick = createEle("div", "date-pick");
+  attFormContainer.append(datePick);
+  const dateLable = createEle("span", "date-label");
+  dateLable.textContent = "Select a date for attendance";
+  datePick.append(dateLable);
+  const dateInput = createEle("input", "att-date-input");
+  dateInput.type = "date";
+  datePick.append(dateInput);
+  
+  // creating a list element to preview list of members and a checkbox to mark them ass attended
+  const attListMarking = createEle("ul", "att-list-marking");
+  // appending the lis to the form container
+  attFormContainer.append(attListMarking);
+
+ // This function iterates over an array named 'documents' (presumably containing attendance data)
+documents.forEach((attendance) => {
+
+  // Create a list item element with the class "mem-mark"
+  const memMark = createEle("li", "mem-mark");
+  attListMarking.append(memMark); // Append the list item to an element "attListMarking" 
+
+  // Create a span element with the class "mem-name-span"
+  const memNameSpan = createEle("span", "mem-name-span");
+  memMark.append(memNameSpan); // Append the span element to the list item
+
+  // Create a checkbox element with the class "tick-mem" and set its type to "checkbox"
+  const tickMem = createEle("input", "tick-mem");
+  tickMem.type = "checkbox";
+  memMark.append(tickMem); // Append the checkbox element to the list item
+  // Set the text content of the span element to the 'name' property of the current attendance object
+  memNameSpan.textContent = `${attendance.name}`;
+});
 
 })

@@ -1,8 +1,8 @@
 ### CSS rules
 
-- All Id names should be in the format: example-id
+- All Id names should be in the format: example_id
 
-- All Class names should be in the format: eacample_class
+- All Class names should be in the format: eacample-class
 
 - All important divisions should be giving id, however not all elements should have id's and classes should be more dominant than id's in every document
 
