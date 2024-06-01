@@ -305,3 +305,103 @@ td {
   font-weight: bold; /* Bold font weight */
   font-size: large; /* Extra large font size */
 }
+
+
+
+/* Forms Container Styling */
+.forms-container {
+  /* Set display, place-items, height, position, top, left, width, background color, z-index, display, opacity, transition for the forms container */
+  display: grid; /* Enable grid layout */
+  place-items: center; /* Center items in the grid */
+  height: 100vh; /* Full viewport height */
+  position: fixed; /* Fix the container to the viewport */
+  top: 0; /* Position at the top */
+  left: 0; /* Position at the left */
+  width: 100%; /* Full viewport width */
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  z-index: 10; /* Ensure container stays on top */
+  display: none; /* Initially hidden */
+  opacity: 0; /* Initially invisible */
+  transition: opacity 1s ease-in-out; /* Smooth opacity transition */
+}
+
+/* Forms Container Inner Div Styling */
+.forms-container > div {
+  /* Set background color, padding, border radius, box shadow, display, gap, width, max-width for the inner div */
+  background: #fff; /* White background */
+  padding: 1.25cm; /* Internal spacing */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0px 2px 5px 2px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+  display: grid; /* Enable grid layout */
+  width: calc(100% - 2cm); /* Adjust width to avoid overlapping */
+  max-width: 380px; /* Maximum width for the form */
+  line-height: 1.8;
+}
+
+/* Forms Container Log Div Styling */
+.forms-container .log {
+  /* Set display and text-align for the log div */
+  display: grid; /* Enable grid layout */
+  text-align: center; /* Center text */
+}
+
+/* Exit Logo Styling */
+.exit-icon {
+  /* Set cursor and text-align for the exit logo container */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  text-align: right; /* Align text to the right */
+}
+
+
+#mem-sub-butn {
+  /* Set background color, color, border, padding, border-radius, cursor, font size, font weight, transition, box-shadow, font-family for menu item buttons */
+  background-color: #BA2125; /* Red background */
+  color: #fff; /* White text */
+  border: none; /* Remove default border */
+  padding: 12px 24px; /* Button padding */
+  border-radius: 6px; /* Rounded corners */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  transition: background-color 0.3s; /* Smooth background color change on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  font-family: 'Inter', sans-serif; /* Use Inter font, fallback to sans-serif */
+}
+
+#mem-sub-butn:hover {
+  /* Change background color on hover */
+  background-color: #A5191E; /* Darker red */
+}
+
+
+/* Ernest's changes */
+#addmemform {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.containerB {
+  text-align: center;
+}
+
+#label {
+  display: block;
+  margin-bottom: 5px;
+  text-align: left;
+}
+
+.input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#memhead{
+  font-size: xx-large;
+  font-weight: bold;
+}

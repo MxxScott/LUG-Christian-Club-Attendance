@@ -137,13 +137,6 @@ body {
   line-height: 1.8;
 }
 
-/* Forms Container Log Div Styling */
-.forms-container .log {
-  /* Set display and text-align for the log div */
-  display: grid; /* Enable grid layout */
-  text-align: center; /* Center text */
-}
-
 /* Exit Logo Styling */
 .exit-icon {
   /* Set cursor and text-align for the exit logo container */

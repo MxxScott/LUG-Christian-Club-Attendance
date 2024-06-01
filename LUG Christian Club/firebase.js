@@ -159,3 +159,5 @@ loginBtn.addEventListener(`click`, () => {
     alert("Please Enter a valid authenticationn details");
   }
 })
+
+const userDataCol = JSON.parse(localStorage.getItem("listData"))
