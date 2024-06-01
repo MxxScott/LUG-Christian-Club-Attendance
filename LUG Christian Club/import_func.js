@@ -12,10 +12,10 @@ export function authenUser(firstVal, secondVal) {
       return false
 }
 
-// creating an element dynamically using the dom
+// creating an element with thier classNames, dynamically using the dom
 export function createEle(eleName, eleClass){
     const ele = document.createElement(eleName);
-    ele.classList.value = eleName;
+    ele.classList.value = eleClass;
 
     return ele;
 }
