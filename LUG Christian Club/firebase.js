@@ -24,6 +24,9 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const db = getFirestore(app);
 
+//INDEX-PAGE JAVASCRIPT
+//importing neccessary functions
+import { authenUser } from "./import_func.js";
 // seclecting necessary elements
 const loginBtn = document.getElementById(`button2`);
 const userName = document.getElementById("Username");
@@ -46,16 +49,6 @@ const exitAddMemIcon = document.getElementById(`exit-addmem-icon`);
 const listButton = document.getElementById(`list-button`);
 
 
-// creating a function for authentication
-function authenUser(firstVal, secondVal) {
-  const first = `frema@sec.lug.club`;
-  const second = `logMeIntoIt`;
-
-  if (firstVal === first && secondVal === second)
-    return true
-  else
-    return false
-}
 
 // Event listener for the login button
 loginButton.addEventListener(`click`, () => {
