@@ -126,42 +126,54 @@ attBtn.addEventListener(`click`, () => {
   // creating a form for making attendance when the attendance btn is clicked
   const mainDiv = document.getElementById("main_section");
   const attFormContainer = createEle("div", "att-form-container");
-  mainDiv.append(attFormContainer);
+  if (attBtn.childNodes[3].textContent === "Attendance"){
+    mainDiv.append(attFormContainer);
 
-  const datePick = createEle("div", "date-pick");
-  attFormContainer.append(datePick);
-  const dateLable = createEle("span", "date-label");
-  dateLable.textContent = "Select a date for attendance";
-  datePick.append(dateLable);
-  const dateInput = createEle("input", "att-date-input");
-  dateInput.type = "date";
-  datePick.append(dateInput);
+    const datePick = createEle("div", "date-pick");
+    attFormContainer.append(datePick);
+    const dateLable = createEle("span", "date-label");
+    dateLable.textContent = "Select a date for attendance";
+    datePick.append(dateLable);
+    const dateInput = createEle("input", "att-date-input");
+    dateInput.type = "date";
+    datePick.append(dateInput);
 
-  // creating a list element to preview list of members and a checkbox to mark them ass attended
-  const attListMarking = createEle("ul", "att-list-marking");
-  // appending the lis to the form container
-  attFormContainer.append(attListMarking);
+    // creating a list element to preview list of members and a checkbox to mark them as attended
+    const attListMarking = createEle("ul", "att-list-marking");
+    // appending the lis to the form container
+    attFormContainer.append(attListMarking);
 
-  // This function iterates over an array named 'documents' (presumably containing attendance data)
-  documents.forEach((attendance) => {
+    // This function iterates over an array named 'documents' (presumably containing attendance data)
+    documents.forEach((attendance) => {
 
-    // Create a list item element with the class "mem-mark"
-    const memMark = createEle("li", "mem-mark");
-    attListMarking.append(memMark); // Append the list item to an element "attListMarking" 
+      // Create a list item element with the class "mem-mark"
+      const memMark = createEle("li", "mem-mark");
+      attListMarking.append(memMark); // Append the list item to an element "attListMarking" 
 
-    // Create a span element with the class "mem-name-span"
-    const memNameSpan = createEle("span", "mem-name-span");
-    memMark.append(memNameSpan); // Append the span element to the list item
+      // Create a span element with the class "mem-name-span"
+      const memNameSpan = createEle("span", "mem-name-span");
+      memMark.append(memNameSpan); // Append the span element to the list item
 
-    // Create a checkbox element with the class "tick-mem" and set its type to "checkbox"
-    const tickMem = createEle("input", "tick-mem");
-    tickMem.type = "checkbox";
-    memMark.append(tickMem); // Append the checkbox element to the list item
-    // Set the text content of the span element to the 'name' property of the current attendance object
-    memNameSpan.textContent = `${attendance.name}`;
-  });
+      // Create a checkbox element with the class "tick-mem" and set its type to "checkbox"
+      const tickMem = createEle("input", "tick-mem");
+      tickMem.type = "checkbox";
+      memMark.append(tickMem); // Append the checkbox element to the list item
+      // Set the text content of the span element to the 'name' property of the current attendance object
+      memNameSpan.textContent = `${attendance.name}`;
 
-})// Event listener for the addmem button
+    });
+    attBtn.childNodes[3].textContent = "Member Listing"
+  }
+  else{
+    attBtn.childNodes[3].textContent = "Attendance"
+    // removing the attendance list from the document to be able to view the member list
+    mainDiv.removeChild(mainDiv.childNodes[7])
+  }
+})
+
+
+// **********************************************
+// Event listener for the addmem button
 addmemButton.addEventListener(`click`, () => {
   // getting authData from localStorage
   const userDataCol = JSON.parse(localStorage.getItem("listData"))
