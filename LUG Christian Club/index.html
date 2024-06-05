@@ -99,11 +99,24 @@
           <label for="role" id="label">Please enter their role within the group.</label>
           <input class="input" type="text" id="role" name="role" required>
           <br>
-          <label for="studyProgramme" id="label">Please enter their programme of study.</label>
-          <input class="input" type="text" id="studyProgramme" name="studyProgramme" required>
+          <label for="studyProgramme" id="label">Please select their programme of study.</label>
+          <select id="studyProgramme" name="studyProgramme" required>
+            <option value="economics">BA Economics and International Relations</option>
+            <option value="politics">BA Politics and International Relations</option>
+            <option value="accounting">BSc Accounting and Fincance</option>
+            <option value="compsci">BSc Computer Science</option>
+            <option value="business">BSc Business Management</option>
+            <option value="marketing">BSc Marketing</option>
+            <option value="law">LLB Law</option>
+          </select>
           <br>
           <label for="level" id="label">Please enter their university level.</label>
-          <input class="input" type="text" id="level" name="level" required>
+          <select id="level" name="level" required>
+            <option value="fdn">Foundation Programme</option>
+            <option value="100">100-Level</option>
+            <option value="200">200-Level</option>
+            <option value="300">300-Level</option>
+          </select>
           <br>
           <label for="contact" id="label">Please enter their WhatsApp contact details.</label>
           <input class="input" type="text" id="contact" name="contact" required>
