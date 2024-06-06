@@ -3,7 +3,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
 //   adding firestore 
-import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"
+import { getFirestore, collection, addDoc, getDocs, query, where } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -25,7 +25,7 @@ const analytics = getAnalytics(app);
 const db = getFirestore(app);
 
 //importing neccessary functions
-import { authenUser } from "./import_func.js";
+import { authenUser, dynamicCreate } from "./import_func.js";
 // seclecting necessary elements
 const loginBtn = document.getElementById(`button2`);
 const userName = document.getElementById("Username");
@@ -94,30 +94,7 @@ document.addEventListener(`DOMContentLoaded`, async () => {
   membersQuery = await getDocs(collection(db, "members"));
   documents = membersQuery.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
   // creating elements for each member
-  documents.forEach((mem) => {
-    const trEle = createEle("tr", "first_row");
-    listTable.append(trEle);
-    const td1 = createEle("td", "col1");
-    const td2 = createEle("td", "col2");
-    const td3 = createEle("td", "col3");
-    const td4 = createEle("td", "col4");
-    const td5 = createEle("td", "col5");
-    // adding innertext values
-    td1.textContent = `${mem.name}`;
-    td2.textContent = `${mem.course}`;
-    td3.textContent = `${mem.role}`;
-    td4.textContent = `${mem.contact}`;
-    //the attendance is an object, so i am just printing the lenght of the object
-    td5.textContent = `${Object.keys(mem.attendance).length}`;
-    // appending to tr as children
-    trEle.append(td1)
-    trEle.append(td2)
-    trEle.append(td3)
-    trEle.append(td4)
-    trEle.append(td5)
-
-  })
-
+  dynamicCreate(documents, listTable);
 })
 
 // ************************************************
@@ -221,8 +198,54 @@ addMemSubBtn.addEventListener('click', async (e) => {
     const docRef = await addDoc(collection(db, "members"), memberData)
     alert(`${memberData.name} Added successfully`);
   } catch (error) {
-    alert(JSON.stringify(error));
+    throw error;
   }
   // console.log(name.value)
   // alert(JSON.stringify(name.value));
+})
+
+
+// ********************************************
+// searching functionality implementation
+// selecting the searching input element
+const searcher = document.getElementById("searchbar");
+// implementing deboucing function to reduce the number of queries to the database
+let idOfTimeOut; //this is for delay enabling and removal in the debouncing function
+
+const deboucing = (myFunc, delay) =>{
+  clearTimeout(idOfTimeOut);
+  idOfTimeOut = setTimeout(()=>{
+    myFunc;
+  }, delay);
+
+  return myFunc;
+}
+
+searcher.addEventListener("keydown", (e)=>{
+  async function searchingData(key){
+    // cheking if the key(string to be serched for) is empty or undefined
+    if (!key || key.trim() === ""){
+      alert("Enter something to search for");
+      return
+    }
+    const memRef = collection(db, "members");
+    const myQuery = query(memRef, where("course", "==", key))
+    // getting the results after runing the query
+    const myQuerySnapShot = await getDocs(myQuery);
+    // dynamically displaying search results to the interphase
+    const searchResults = myQuerySnapShot.docs.map((doc)=>({
+      id: doc.id, ...doc.data()
+    }))
+    console.log(searchResults);
+
+    return searchResults;
+  }
+  // if the user pressed enter
+  if (e.key === "Enter"){
+    // getting the input that users will possibly type
+    const searchQueryVal = searcher.value.trim();
+    const searchData = deboucing(searchingData(searchQueryVal), 500);
+    //calling the dynamice create function
+    dynamicCreate(searchData, listTable);
+  }
 })
