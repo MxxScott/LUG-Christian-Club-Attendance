@@ -25,7 +25,7 @@ const analytics = getAnalytics(app);
 const db = getFirestore(app);
 
 //importing neccessary functions
-import { authenUser, dynamicCreate } from "./import_func.js";
+import { authenUser, dynamicCreate, deboucing } from "./import_func.js";
 // seclecting necessary elements
 const loginBtn = document.getElementById(`button2`);
 const userName = document.getElementById("Username");
@@ -98,12 +98,15 @@ document.addEventListener(`DOMContentLoaded`, async () => {
 })
 
 // ************************************************
+const mainDiv = document.getElementById("main_section");
+// creating a click flagg
+let attClicked = false;
 // creating the attendance form dynamically
 attBtn.addEventListener(`click`, () => {
   // creating a form for making attendance when the attendance btn is clicked
-  const mainDiv = document.getElementById("main_section");
   const attFormContainer = createEle("div", "att-form-container");
   if (attBtn.childNodes[3].textContent === "Attendance"){
+    attClicked = true
     mainDiv.append(attFormContainer);
 
     const datePick = createEle("div", "date-pick");
@@ -114,7 +117,7 @@ attBtn.addEventListener(`click`, () => {
     const dateInput = createEle("input", "att-date-input");
     dateInput.type = "date";
     datePick.append(dateInput);
-
+    
     // creating a list element to preview list of members and a checkbox to mark them as attended
     const attListMarking = createEle("ul", "att-list-marking");
     // appending the lis to the form container
@@ -143,10 +146,23 @@ attBtn.addEventListener(`click`, () => {
   }
   else{
     attBtn.childNodes[3].textContent = "Attendance"
+    attClicked = false
     // removing the attendance list from the document to be able to view the member list
     mainDiv.removeChild(mainDiv.childNodes[7])
   }
+console.dir(mainDiv.children)
+
 })
+//redering some functions based on the availability of the attendace psage
+  const attFormPage = document.querySelectorAll(".att-form-container");
+
+  // will continue from here
+if (attFormPage && attClicked){
+  console.log("you can render me")
+  console.log(attFormPage)
+}
+
+// console.dir(mainDiv.children)
 
 
 // **********************************************
@@ -209,23 +225,19 @@ addMemSubBtn.addEventListener('click', async (e) => {
 // searching functionality implementation
 // selecting the searching input element
 const searcher = document.getElementById("searchbar");
-// implementing deboucing function to reduce the number of queries to the database
-let idOfTimeOut; //this is for delay enabling and removal in the debouncing function
 
-const deboucing = (myFunc, delay) =>{
-  clearTimeout(idOfTimeOut);
-  idOfTimeOut = setTimeout(()=>{
-    myFunc;
-  }, delay);
 
-  return myFunc;
-}
-
-searcher.addEventListener("keydown", (e)=>{
+searcher.addEventListener("keyup", async(e)=>{
   async function searchingData(key){
     // cheking if the key(string to be serched for) is empty or undefined
     if (!key || key.trim() === ""){
-      alert("Enter something to search for");
+    //deleting the elements that are already previewed to the screen to be able to present search results
+      const rowELe = document.querySelectorAll(".other_rows");
+      rowELe.forEach((ele)=>{
+        ele.remove();
+      })
+      dynamicCreate(documents, listTable);
+      // alert("Enter something to search for");
       return
     }
     const memRef = collection(db, "members");
@@ -236,16 +248,20 @@ searcher.addEventListener("keydown", (e)=>{
     const searchResults = myQuerySnapShot.docs.map((doc)=>({
       id: doc.id, ...doc.data()
     }))
-    console.log(searchResults);
+    // console.log(searchResults);                                                                      
 
     return searchResults;
   }
-  // if the user pressed enter
-  if (e.key === "Enter"){
     // getting the input that users will possibly type
     const searchQueryVal = searcher.value.trim();
-    const searchData = deboucing(searchingData(searchQueryVal), 500);
-    //calling the dynamice create function
-    dynamicCreate(searchData, listTable);
-  }
+    //deleting the elements that are already previewed to the screen to be able to present search results
+    const rowELe = document.querySelectorAll(".other_rows");
+    rowELe.forEach((ele)=>{
+      ele.remove();
+    })
+    // console.log(rowELe)
+    const searchData = deboucing(await searchingData(searchQueryVal), 700);
+    if (searchData){
+      dynamicCreate(searchData, listTable);
+    }
 })
