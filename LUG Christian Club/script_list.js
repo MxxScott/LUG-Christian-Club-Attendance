@@ -99,6 +99,8 @@ document.addEventListener(`DOMContentLoaded`, async () => {
 
 // ************************************************
 const mainDiv = document.getElementById("main_section");
+// Object for collecting attendance data{}
+const attendanceObj = {};
 // creating a click flagg
 let attClicked = false;
 // creating the attendance form dynamically
@@ -140,9 +142,19 @@ attBtn.addEventListener(`click`, () => {
       memMark.append(tickMem); // Append the checkbox element to the list item
       // Set the text content of the span element to the 'name' property of the current attendance object
       memNameSpan.textContent = `${attendance.name}`;
-
+      // adding every change and keeping an object to allow for universal update
+      tickMem.addEventListener("click", ()=>{
+        // attendanceObj.attendance.name = tickMem.checked;
+        // console.log(attendanceObj)
+        // console.log(attendance.name)
+        // console.log(dateInput.value)
+      })
     });
+    const submitAttBtn = createEle("button", "atten-sub");
+    submitAttBtn.textContent = "Submit Attendance"
+    attFormContainer.append(submitAttBtn);
     attBtn.childNodes[3].textContent = "Member Listing"
+   
   }
   else{
     attBtn.childNodes[3].textContent = "Attendance"
@@ -150,7 +162,6 @@ attBtn.addEventListener(`click`, () => {
     // removing the attendance list from the document to be able to view the member list
     mainDiv.removeChild(mainDiv.childNodes[7])
   }
-console.dir(mainDiv.children)
 
 })
 //redering some functions based on the availability of the attendace psage

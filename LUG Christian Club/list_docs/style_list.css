@@ -1,3 +1,9 @@
+/* css colors */
+/* #a5191e */
+/* making the scroll bar not to show */
+::-webkit-scrollbar {
+  display: none;
+}
 body {
   margin: 0; /* Remove default body margins */
   padding: 0; /*remove default paddings to*/
@@ -49,11 +55,24 @@ body {
   display: flex;
   align-items: center;
   gap: 2rem;
+  margin-top: 1rem;
+}
+#main_section .date-pick .date-label {
+  font-size: 1.2rem;
+  text-transform: capitalize;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 510;
+}
+#main_section .date-pick .att-date-input {
+  width: 20%;
+  font-size: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #696868;
 }
 #main_section .att-list-marking {
   width: 80%;
   padding: 1rem;
-  height: 80dvh;
+  height: 78dvh;
   overflow-y: scroll;
   overflow-x: hidden;
 }
@@ -70,10 +89,23 @@ body {
   font-size: 1.2rem;
   font-family: Arial, Helvetica, sans-serif;
 }
+
 #main_section .att-list-marking .tick-mem {
   width: 1rem;
   height: 1rem;
 }
+#main_section .att-form-container .atten-sub {
+  border: none;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 0.6rem;
+  cursor: pointer;
+  background-color: #a5191e;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+/* other css */
 
 /* Style for the logo image within the sidebar */
 .sidebar .logo img {
