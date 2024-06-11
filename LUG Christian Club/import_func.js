@@ -1,11 +1,22 @@
 // these are general functions that maybe used to achieve certain functionalities
 
+// importing from firestore
+// import {collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"
 
 // creating a function for authentication
 export function authenUser(firstVal, secondVal) {
+    //getting user infomation from database
+
+    // const hashedPassword = window.crypto.subtle.digest('SHA-256', new TextEncoder().encode(secondVal));
+    // let hashedPasswordString;
+    //         hashedPassword.then((hashBuffer) => {
+    //             const hashedPasswordArray = Array.from(new Uint8Array(hashBuffer));
+    //             hashedPasswordString = hashedPasswordArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    //         });
+    //         console.log(hashedPasswordString);
     const first = `frema@sec.lug.club`;
     const second = `logMeIntoIt`;
-  
+
     if (firstVal === first && secondVal === second)
       return true
     else
@@ -23,7 +34,7 @@ export function createEle(eleName, eleClass){
 //dynamic form creater passing the member list from the database, and the table elment
 export function dynamicCreate(documents, listTable){
    documents.forEach((mem) => {
-    const trEle = createEle("tr", "first_row");
+    const trEle = createEle("tr", "other_rows");
     listTable.append(trEle);
     const td1 = createEle("td", "col1");
     const td2 = createEle("td", "col2");
@@ -45,4 +56,14 @@ export function dynamicCreate(documents, listTable){
     trEle.append(td5)
 
   })
+}
+// implementing deboucing function to reduce the number of queries to the database
+let idOfTimeOut; //this is for delay enabling and removal in the debouncing function
+export const deboucing = (myFunc, delay) =>{
+  clearTimeout(idOfTimeOut);
+  idOfTimeOut = setTimeout(()=>{
+    myFunc;
+  }, delay);
+
+  return myFunc;
 }

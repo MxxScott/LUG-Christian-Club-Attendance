@@ -22,7 +22,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
-const db = getFirestore(app);
+export const db = getFirestore(app);
 
 //INDEX-PAGE JAVASCRIPT
 //importing neccessary functions
@@ -139,7 +139,7 @@ addMemSubBtn.addEventListener('click', async (e) => {
   // alert(JSON.stringify(name.value));
 })
 
-// login in
+// loging into the system
 loginBtn.addEventListener(`click`, () => {
 
   // getting the form field values
