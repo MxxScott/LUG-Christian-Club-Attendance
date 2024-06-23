@@ -1,0 +1,452 @@
+/* css colors */
+/* #a5191e */
+/* making the scroll bar not to show */
+::-webkit-scrollbar {
+  display: none;
+}
+body {
+  margin: 0; /* Remove default body margins */
+  padding: 0; /*remove default paddings to*/
+  box-sizing: border-box;
+}
+
+/* Style for Material Symbols Outlined icons */
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, /* Set fill to 0 (outline) */ "wght" 400,
+    /* Set weight to 400 (regular) */ "GRAD" 0,
+    /* Set gradient to 0 (no gradient) */ "opsz" 24; /* Set optical size to 24 pixels */
+}
+
+/* Style for the main container "list" */
+#list {
+  display: flex; /* Enable flexbox layout */
+  flex-direction: row; /* Arrange flex items in a row */
+  height: 100dvh; /* Set height to 100% of viewport height */
+}
+
+/* Style for the sidebar container */
+.sidebar {
+  flex: 2; /* Take up 2/12 of the container's space */
+  border-right: #e0e0e0 solid 0.05rem; /* Add a light gray right border */
+  height: 100%; /* Set height to 100% of its parent */
+}
+/* Style for the main content area */
+.main {
+  flex: 10; /* Take up 10/12 of the container's space */
+  height: 100%; /* Set height to 100% of its parent */
+}
+
+/*(Lawal this is the css for the attendance list) styling for the dynamically created form for attendance */
+#main_section {
+  position: relative;
+}
+#main_section .att-form-container {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+}
+#main_section .date-pick {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+#main_section .date-pick .date-label {
+  font-size: 1.2rem;
+  text-transform: capitalize;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 510;
+}
+#main_section .date-pick .att-date-input {
+  width: 20%;
+  font-size: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #696868;
+}
+#main_section .att-list-marking {
+  width: 80%;
+  padding: 1rem;
+  height: 78dvh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+#main_section .att-list-marking li {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.7rem;
+  align-items: center;
+  border-bottom: 0.08rem solid gray;
+}
+#main_section .att-list-marking span {
+  text-transform: capitalize;
+  font-size: 1.2rem;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#main_section .att-list-marking .tick-mem {
+  width: 1rem;
+  height: 1rem;
+}
+#main_section .att-form-container .atten-sub {
+  border: none;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 0.6rem;
+  cursor: pointer;
+  background-color: #a5191e;
+  color: white;
+  margin-bottom: 1rem;
+}
+/* other css */
+
+/* Style for the logo image within the sidebar */
+.sidebar .logo img {
+  width: 100%; /* Make the image responsive to its container */
+}
+
+/* Style for sidebar buttons */
+.sidebar_button {
+  width: 100%; /* Make buttons span the entire width */
+  display: flex; /* Enable flexbox layout */
+  flex-direction: row; /* Arrange flex items in a row */
+  background-color: white; /* White background */
+  height: 3rem; /* Fixed height */
+  align-items: center; /* Center items vertically */
+  border-radius: 0.5rem; /* Add rounded corners */
+  transition: all 0.2s ease; /* Smooth transition for hover effects */
+  cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+/* Hover effect for sidebar buttons */
+.sidebar_button:hover {
+  color: #333; /* Darker text color on hover */
+  transform: scale(1.05); /* Slightly increase size on hover */
+  border-right: #e0e0e0 solid 0.05rem;
+}
+
+/* Remove default padding and margin for Material Icons */
+.material-icons {
+  padding: 0;
+  margin: 0;
+}
+
+/* Style for the view container (search bar and switch) */
+.view {
+  display: flex; /* Enable flexbox layout */
+  flex-direction: row; /* Arrange flex items in a row */
+  height: 2.5rem; /* Fixed height */
+  padding-left: 2rem; /* Left padding */
+  padding-right: 2rem; /* Right padding */
+  padding-bottom: 1rem; /* Bottom padding */
+  padding-top: 1rem; /* Top padding */
+}
+
+/* Style for the view buttons */
+.view-button {
+  display: flex; /* Enable flexbox layout */
+  align-items: center; /* Center items vertically */
+  justify-content: center; /* Center items horizontally */
+  width: 50%; /* Take up half the width */
+  height: 100%; /* Fixed height */
+  border: none; /* Remove default button border */
+  border-radius: 0.5rem; /* Add rounded corners */
+  background-color: #f7f7f7; /* Light gray background */
+  color: black; /* Black text color */
+  font-size: 18px; /* Icon size */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  transition: background-color 0.2s ease; /* Smooth transition for color change */
+}
+
+/* Style for the active view button */
+.view-button.active {
+  background-color: white; /* White background when active */
+}
+
+/* Style for the view icons */
+.view-button .material-icons {
+  font-size: 18px; /* Icon size */
+}
+
+/* Remove default margins for the view buttons */
+.view-button * {
+  margin: 0;
+}
+
+/* Style for the view options container */
+.viewopt {
+  display: flex; /* Enable flexbox layout */
+  width: 6.25rem; /* Take up full width */
+  justify-content: space-between; /* Space buttons evenly */
+  background-color: #f7f7f7; /* Light gray background */
+  padding: 0.2rem;
+  border-radius: 0.6rem; /* Add rounded corners */
+}
+
+/* Remove default margins for the view options container */
+.viewopt * {
+  margin: 0;
+}
+
+/* Remove the default switch */
+.switch {
+  display: none; /* Hide the default switch */
+}
+
+/* Style for the top container (header and view) */
+.top {
+  display: flex; /* Enable flexbox layout */
+  flex-direction: column; /* Arrange flex items in a column */
+  height: 20%;
+}
+
+/* Style for the search icon within the search bar */
+.search_icon {
+  position: relative; /* Position relative to its normal position */
+  top: 15%; /* Position from the top */
+  margin-left: 0.5rem; /* Left margin */
+  margin-right: 0.5rem; /* Right margin */
+}
+
+/* Style for the search input field */
+#searchbar {
+  width: 100%; /* Take up full width of parent */
+  height: 100%; /* Take up full height of parent */
+  border: none; /* Remove default input border */
+  outline: none; /* Remove outline on focus */
+}
+
+/* Style for the search bar container */
+.search {
+  width: 100%; /* Take up full width of parent */
+  display: flex; /* Enable flexbox layout */
+  flex-direction: row; /* Arrange flex items in a row */
+  border: #e0e0e0 solid 0.1rem; /* Add a light gray border */
+  border-radius: 0.625rem; /* Add rounded corners */
+  margin-right: 2rem; /* Right margin */
+}
+
+/* Reset right position for the view options container */
+.viewopt {
+  right: none;
+}
+
+/* Style for the header container */
+.header {
+  padding-top: 1rem; /* Top padding */
+  padding-left: 2rem; /* Left padding */
+  padding-right: 2rem; /* Right padding */
+}
+
+/* Remove default margins for all elements within the header */
+.header * {
+  margin: 0;
+}
+
+/* Style for the placeholder text in the search bar */
+#searchbar::placeholder {
+  color: #828282; /* Gray placeholder text color */
+  font-size: medium; /* Medium font size */
+  font-family: "Inter", sans-serif; /* Use Inter font */
+}
+
+/* Style for the header text */
+.header p {
+  font-family: "Inter", sans-serif; /* Use Inter font */
+  font-weight: bold; /* Bold font weight */
+  font-size: x-large; /* Extra large font size */
+}
+
+/* Style for the active home button */
+.homebar .sidebar_button {
+  background-color: #f7f7f7; /* Light gray background */
+}
+
+/* Remove default borders for all elements within the sidebar */
+.sidebar * {
+  border: none;
+}
+
+/* Style for the home icon (not used in HTML) */
+#home_icon {
+  color: #5f6368; /* Gray icon color */
+}
+
+/* Style for button text within sidebar buttons */
+.button_span {
+  font-family: "Inter", sans-serif; /* Use Inter font */
+  font-size: medium; /* Medium font size */
+  font-weight: 500; /* Medium font weight */
+}
+
+/* Style for the list container */
+.listcont {
+  display: flex; /* Enable flexbox layout */
+  flex-direction: column; /* Arrange flex items in a column */
+  height: calc(
+    100% - 20%
+  ); /* Set height to remaining space differencing it from the top div element*/
+  padding-left: 2rem; /* Left padding */
+  padding-right: 2rem; /* Right padding */
+  overflow-y: auto; /* Enable vertical scroll */
+}
+
+/* Style for the list header */
+.listhead {
+  display: flex; /* Enable flexbox layout */
+  flex-direction: row; /* Arrange flex items in a row */
+  height: 2.5rem; /* Fixed height */
+}
+
+/* Style for the list content */
+.listcontent {
+  display: flex; /* Enable flexbox layout */
+  flex-direction: column; /* Arrange flex items in a column */
+  height: calc(100% - 2.5rem); /* Set height to remaining space */
+}
+
+/* Style for the table within the list */
+table {
+  width: 100%; /* Take up full width of parent */
+  border-collapse: collapse; /* Remove gaps between table cells */
+  border-radius: 0.625rem; /* Add rounded corners */
+  overflow: hidden; /* Hide content that overflows */
+  font-family: "Inter", sans-serif; /* Use Inter font */
+}
+
+/* Style for table rows */
+tr {
+  height: 2.5rem; /* Fixed row height */
+}
+
+/* Style for table cells */
+td {
+  text-align: left; /* Align text to the left */
+  padding: 0 1rem; /* Add padding */
+  border-bottom: #e0e0e0 solid 0.05rem; /* Add a light gray bottom border */
+}
+
+/* Style for the overlay container (not used in this code) */
+.overlay_container {
+  position: fixed; /* Fixed positioning */
+  top: 0; /* Position from the top */
+  left: 0; /* Position from the left */
+  width: 100%; /* Take up full width */
+  height: 100%; /* Take up full height */
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  display: none; /* Initially hidden */
+  z-index: 100; /* Ensure it's on top of other elements */
+}
+
+.col1 {
+  color: #828282;
+  width: 15%;
+}
+
+.first_row {
+  font-family: "Inter", sans-serif; /* Use Inter font */
+  font-weight: bold; /* Bold font weight */
+  font-size: large; /* Extra large font size */
+}
+
+/* Forms Container Styling */
+.forms-container {
+  /* Set display, place-items, height, position, top, left, width, background color, z-index, display, opacity, transition for the forms container */
+  display: grid; /* Enable grid layout */
+  place-items: center; /* Center items in the grid */
+  height: 100vh; /* Full viewport height */
+  position: fixed; /* Fix the container to the viewport */
+  top: 0; /* Position at the top */
+  left: 0; /* Position at the left */
+  width: 100%; /* Full viewport width */
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  z-index: 10; /* Ensure container stays on top */
+  display: none; /* Initially hidden */
+  opacity: 0; /* Initially invisible */
+  transition: opacity 1s ease-in-out; /* Smooth opacity transition */
+}
+
+/* Forms Container Inner Div Styling */
+.forms-container > div {
+  /* Set background color, padding, border radius, box shadow, display, gap, width, max-width for the inner div */
+  background: #fff; /* White background */
+  padding: 1.25cm; /* Internal spacing */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0px 2px 5px 2px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+  display: grid; /* Enable grid layout */
+  width: calc(100% - 2cm); /* Adjust width to avoid overlapping */
+  max-width: 380px; /* Maximum width for the form */
+  line-height: 1.8;
+}
+
+/* Forms Container Log Div Styling */
+.forms-container .log {
+  /* Set display and text-align for the log div */
+  display: grid; /* Enable grid layout */
+  text-align: center; /* Center text */
+}
+
+/* Exit Logo Styling */
+.exit-icon {
+  /* Set cursor and text-align for the exit logo container */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  text-align: right; /* Align text to the right */
+}
+
+#mem-sub-butn {
+  /* Set background color, color, border, padding, border-radius, cursor, font size, font weight, transition, box-shadow, font-family for menu item buttons */
+  background-color: #ba2125; /* Red background */
+  color: #fff; /* White text */
+  border: none; /* Remove default border */
+  padding: 12px 24px; /* Button padding */
+  border-radius: 6px; /* Rounded corners */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  transition: background-color 0.3s; /* Smooth background color change on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  font-family: "Inter", sans-serif; /* Use Inter font, fallback to sans-serif */
+}
+
+#mem-sub-butn:hover {
+  /* Change background color on hover */
+  background-color: #a5191e; /* Darker red */
+}
+
+/* Ernest's changes */
+#addmemform {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.containerB {
+  text-align: center;
+}
+
+#label {
+  display: block;
+  margin-bottom: 5px;
+  text-align: left;
+}
+
+.input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#memhead {
+  font-size: xx-large;
+  font-weight: bold;
+}

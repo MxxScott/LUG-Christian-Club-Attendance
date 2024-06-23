@@ -52,7 +52,7 @@ const listTable = document.getElementById(`our-list-table`);
 const attBtn = document.getElementById("sidebar_button");
 HomeNav.addEventListener(`click`, () => {
   // Redirect to the index.html page
-  window.location.href = `public/index.html`;
+  window.location.href = `index.html`;
 });
 
 // Get the view buttons
@@ -180,14 +180,17 @@ attBtn.addEventListener(`click`, (e) => {
     attBtn.childNodes[3].textContent = "Member Listing"
     submitAttBtn.addEventListener("click", (e)=>{
       // update database with attendance
+      submitAttBtn.textContent = "Loading......"
       attendanceList.forEach(async(attendance)=>{
         const id = attendance.id
         const date = attendance.date
 
         const memRef = doc(db, "members", id)
         await updateDoc(memRef, {attendance: arrayUnion(date)}).then(()=>{
+          window.location.reload()
           console.log("done")
         }).catch((err)=>{
+          submitAttBtn.textContent = "Submit Attendance"
           console.log(err)
         })
       })
@@ -204,16 +207,7 @@ attBtn.addEventListener(`click`, (e) => {
   }
 
 })
-//redering some functions based on the availability of the attendace page
-  const attFormPage = document.querySelectorAll(".att-form-container");
 
-  // will continue from here
-if (attFormPage && attClicked){
-  console.log("you can render me")
-  console.log(attFormPage)
-}
-
-// console.dir(mainDiv.children)
 
 
 // **********************************************

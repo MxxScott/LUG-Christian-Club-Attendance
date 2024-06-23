@@ -1,139 +1,89 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome to Firebase Hosting</title>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Christian Club Online</title>
-  <link rel="stylesheet" href="../index_docs/style_index.css">
-  <!-- import fonts from google -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Kavoon&family=Livvic:wght@400;700&display=swap" rel="stylesheet">
-  <!-- import icons from google -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-</head>
-
-<body>
-  <header>
-    <!-- Christian Club logo -->
-    <div class="logo" id="logoA">
-      <img src="../index_docs/media/img/logo.png" alt="Christian Club Logo">
-    </div>
-    <!-- Heading texts under logo -->
-    <div class="heading">
-      <h1 class="kavoon-font">Christian Club Online</h1>
-      <p class="livvic-font">Welcome to Christian Club Online</p>
-    </div>
-  </header>
-  <main>
-    <!-- Options Division -->
-    <div class="menu">
-      <!-- New Members Option Div -->
-      <div class="menu-item">
-        <img src="../index_docs/media/img/newmem.png" alt="Add New Member Icon">
-        <!--Including id to enable button -->
-        <button id="addmem-button">Add New Member</button>
-      </div>
-      <!-- Members List Option Div -->
-      <div class="menu-item">
-        <img src="../index_docs/media/img/memlist.png" alt="Members List Icon">
-        <button id="list-button">Members List</button>
-      </div>
-      <!-- Login Option Div -->
-      <div class="menu-item">
-        <img src="../index_docs/media/img/login.png" alt="Login Icon">
-        <button id="login-button-index">Login</button>
-      </div>
-    </div>
-  </main>
-  <!-- Login overlay form -->
-  <!-- 
-        Kwame this is where you need to change, 
-        and put your form code here
-        And make sure to go to the style_index.css file in index docs
-        to edit the styling of your form    
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/10.12.2/firebase-app-compat.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/10.12.2/firebase-auth-compat.js"></script>
+    <script defer src="/__/firebase/10.12.2/firebase-database-compat.js"></script>
+    <script defer src="/__/firebase/10.12.2/firebase-firestore-compat.js"></script>
+    <script defer src="/__/firebase/10.12.2/firebase-functions-compat.js"></script>
+    <script defer src="/__/firebase/10.12.2/firebase-messaging-compat.js"></script>
+    <script defer src="/__/firebase/10.12.2/firebase-storage-compat.js"></script>
+    <script defer src="/__/firebase/10.12.2/firebase-analytics-compat.js"></script>
+    <script defer src="/__/firebase/10.12.2/firebase-remote-config-compat.js"></script>
+    <script defer src="/__/firebase/10.12.2/firebase-performance-compat.js"></script>
+    <!-- 
+      initialize the SDK after all desired features are loaded, set useEmulator to false
+      to avoid connecting the SDK to running emulators.
     -->
-  <div class="forms-container" id="login-form">
-    <div class="log">
-      <!-- Exit Button for the form -->
-      <div class="exit-icon">
-        <i class="material-icons" id="exit-login-icon">close</i>
-      </div>
-      <div class="container">
-        <!-- Christian Club logo -->
-        <div class="logo">
-          <img src="../index_docs/media/img/logo.png" alt="Christian Club Logo">
-        </div>
-        <div class="logtitle">
-          <span>Login</span>
-        </div>
-        <div id="Login">
-          <label for="Username">Username</label>
-          <br>
-          <input type="text" id="Username" name="Username">
-        </div>
-        <div class="Login">
-          <label for="password"> Password</label>
-          <br>
-          <input type="password" name="password" id="password">
-        </div>
-        <button class="Login" type="submit" id="button2">Login</button>
-      </div>
+    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+
+    <style media="screen">
+      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
+      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
+      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
+      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
+      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
+      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
+      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
+      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
+      @media (max-width: 600px) {
+        body, #message { margin-top: 0; background: white; box-shadow: none; }
+        body { border-top: 16px solid #ffa100; }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="message">
+      <h2>Welcome</h2>
+      <h1>Firebase Hosting Setup Complete</h1>
+      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
+      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
     </div>
-  </div>
+    <p id="load">Firebase SDK Loading&hellip;</p>
 
-  <!-- Ernests form -->
-  <div class="forms-container" id="addmem-form">
-    <div class="add">
-      <!-- Exit Button for the form -->
-      <div class="exit-icon">
-        <i class="material-icons" id="exit-addmem-icon">close</i>
-      </div>
-      <div class="containerB">
-        <span id="memhead">Member Addition</span>
-        <form id="dataForm">
-          <label for="name" id="label">Please enter the member's name.</label>
-          <input class="input" type="text" id="name" name="name" required>
-          <br>
-          <label for="role" id="label">Please enter their role within the group.</label>
-          <input class="input" type="text" id="role" name="role" required>
-          <br>
-          <label for="studyProgramme" id="label">Please select their programme of study.</label>
-          <select id="studyProgramme" name="studyProgramme" required>
-            <option value="economics">BA Economics and International Relations</option>
-            <option value="politics">BA Politics and International Relations</option>
-            <option value="accounting">BSc Accounting and Fincance</option>
-            <option value="compsci">BSc Computer Science</option>
-            <option value="business">BSc Business Management</option>
-            <option value="marketing">BSc Marketing</option>
-            <option value="law">LLB Law</option>
-          </select>
-          <br>
-          <label for="level" id="label">Please enter their university level.</label>
-          <select id="level" name="level" required>
-            <option value="fdn">Foundation Programme</option>
-            <option value="100">100-Level</option>
-            <option value="200">200-Level</option>
-            <option value="300">300-Level</option>
-          </select>
-          <br>
-          <label for="contact" id="label">Please enter their WhatsApp contact details.</label>
-          <input class="input" type="text" id="contact" name="contact" required>
-          <br>
-          <button type="submit" class="submit_button" id="mem-sub-button">Submit</button>
-        </form>
-      </div>
-    </div>
-  </div>
-  </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const loadEl = document.querySelector('#load');
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+        // // The Firebase SDK is initialized and available here!
+        //
+        // firebase.auth().onAuthStateChanged(user => { });
+        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
+        // firebase.firestore().doc('/foo/bar').get().then(() => { });
+        // firebase.functions().httpsCallable('yourFunction')().then(() => { });
+        // firebase.messaging().requestPermission().then(() => { });
+        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
+        // firebase.analytics(); // call to activate
+        // firebase.analytics().logEvent('tutorial_completed');
+        // firebase.performance(); // call to activate
+        //
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
 
-  <!-- end of code -->
-  <!-- <script type="text/javascript" src="index_docs/script_index.js"></script> -->
-  <!-- including  firbase JS SDK-->
-  <script src="https://www.gstatic.com/firebasejs/10.12.1/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.1/firebase-firestore-compat.js"></script>
-  <script type="module" src="../firebase.js"></script>
-</body>
-
+        try {
+          let app = firebase.app();
+          let features = [
+            'auth', 
+            'database', 
+            'firestore',
+            'functions',
+            'messaging', 
+            'storage', 
+            'analytics', 
+            'remoteConfig',
+            'performance',
+          ].filter(feature => typeof app[feature] === 'function');
+          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
+        } catch (e) {
+          console.error(e);
+          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
+        }
+      });
+    </script>
+  </body>
 </html>

@@ -1,0 +1,349 @@
+/* General Styling */
+body {
+  /* Set font, background color, and layout for the entire page */
+  font-family: 'Inter', sans-serif;
+  /* Use Inter font, fallback to sans-serif */
+  background-color: #fff;
+  /* White background */
+  display: flex;
+  /* Enable flexbox layout */
+  flex-direction: column;
+  /* Arrange elements vertically */
+  align-items: center;
+  /* Center elements horizontally */
+  justify-content: center;
+  /* Center elements vertically */
+  min-height: 100vh;
+  /* Ensure page covers full viewport height */
+  margin: 0;
+  /* Remove default margins */
+}
+
+/* Logo Styling */
+.logo {
+  /* Set width, max-width, margin, and text alignment for the logo container */
+  width: 300px;
+  /* Fixed width, but can shrink to 100% if necessary */
+  max-width: 100%;
+  /* Prevent logo from exceeding its container */
+  text-align: center;
+  /* Center logo horizontally */
+}
+
+.logo img {
+  /* Set width, display, margin for the logo image */
+  width: 100%;
+  /* Make the image responsive to its container */
+  display: block;
+  /* Treat the image as a block element */
+  margin: 0 auto;
+  /* Center the image horizontally */
+  margin-left: 2.5rem;
+  /* Add left margin for visual balance */
+}
+
+/* Heading Styling */
+.heading {
+  /* Set text alignment and margin for the heading container */
+  text-align: center;
+  /* Center text */
+  margin-bottom: 30px;
+  /* Add margin below the heading */
+}
+
+/* Kavoon Font Styling */
+.kavoon-font {
+  /* Set font family, size, weight, and margin for the Kavoon font */
+  font-family: 'Kavoon', sans-serif;
+  /* Use Kavoon font, fallback to sans-serif */
+  font-size: 36px;
+  /* Large font size */
+  font-weight: 700;
+  /* Bold weight */
+  margin: 0;
+  /* Remove default margin */
+}
+
+/* Livvic Font Styling */
+.livvic-font {
+  /* Set font family, size, weight, and color for the Livvic font */
+  font-family: 'Livvic', sans-serif;
+  /* Use Livvic font, fallback to sans-serif */
+  font-size: 20px;
+  /* Standard font size */
+  font-weight: normal;
+  /* Normal weight */
+  color: #828282;
+  /* Gray color */
+}
+
+/* Menu Styling */
+.menu {
+  /* Set display, gap, flex-wrap, justify-content for menu items */
+  display: flex;
+  /* Enable flexbox layout */
+  gap: 30px;
+  /* Add spacing between menu items */
+  flex-wrap: wrap;
+  /* Wrap items to multiple rows if needed */
+  justify-content: center;
+  /* Center menu items horizontally */
+}
+
+/* Menu Item Styling */
+.menu-item {
+  /* Set background color, border radius, box shadow, padding, text alignment, width, max-width, height, display, flex-direction, align-items, justify-content for menu items */
+  background-color: #fff;
+  /* White background */
+  border-radius: 10px;
+  /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  /* Subtle shadow */
+  padding: 30px;
+  /* Internal spacing */
+  text-align: center;
+  /* Center text */
+  width: 200px;
+  /* Fixed width, but can shrink to 45% if necessary */
+  max-width: 45%;
+  /* Prevent item from exceeding its container */
+  height: 150px;
+  /* Fixed height */
+  display: flex;
+  /* Enable flexbox layout */
+  flex-direction: column;
+  /* Arrange items vertically */
+  align-items: center;
+  /* Center items horizontally */
+  justify-content: center;
+  /* Center items vertically */
+}
+
+/* Menu Item Image Styling */
+.menu-item img {
+  /* Set width and margin for the menu item image */
+  width: 80px;
+  /* Image size */
+  margin-bottom: 15px;
+  /* Margin below the image */
+}
+
+/* Menu Item Button Styling */
+.menu-item button {
+  /* Set background color, color, border, padding, border-radius, cursor, font size, font weight, transition, box-shadow, font-family for menu item buttons */
+  background-color: #BA2125;
+  /* Red background */
+  color: #fff;
+  /* White text */
+  border: none;
+  /* Remove default border */
+  padding: 12px 24px;
+  /* Button padding */
+  border-radius: 6px;
+  /* Rounded corners */
+  cursor: pointer;
+  /* Change cursor to pointer on hover */
+  font-size: 16px;
+  /* Button text size */
+  font-weight: bold;
+  /* Bold text */
+  transition: background-color 0.3s;
+  /* Smooth background color change on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  /* Subtle shadow */
+  font-family: 'Inter', sans-serif;
+  /* Use Inter font, fallback to sans-serif */
+}
+
+/* Menu Item Button Hover Styling */
+.menu-item button:hover {
+  /* Change background color on hover */
+  background-color: #A5191E;
+  /* Darker red */
+}
+
+/* Forms Container Styling */
+.forms-container {
+  /* Set display, place-items, height, position, top, left, width, background color, z-index, display, opacity, transition for the forms container */
+  display: grid;
+  /* Enable grid layout */
+  place-items: center;
+  /* Center items in the grid */
+  height: 100vh;
+  /* Full viewport height */
+  position: fixed;
+  /* Fix the container to the viewport */
+  top: 0;
+  /* Position at the top */
+  left: 0;
+  /* Position at the left */
+  width: 100%;
+  /* Full viewport width */
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Semi-transparent black background */
+  z-index: 10;
+  /* Ensure container stays on top */
+  display: none;
+  /* Initially hidden */
+  opacity: 0;
+  /* Initially invisible */
+  transition: opacity 1s ease-in-out;
+  /* Smooth opacity transition */
+}
+
+/* Forms Container Inner Div Styling */
+.forms-container>div {
+  /* Set background color, padding, border radius, box shadow, display, gap, width, max-width for the inner div */
+  background: #fff;
+  /* White background */
+  padding: 1.25cm;
+  /* Internal spacing */
+  border-radius: 10px;
+  /* Rounded corners */
+  box-shadow: 0px 2px 5px 2px rgba(0, 0, 0, 0.05);
+  /* Subtle shadow */
+  display: grid;
+  /* Enable grid layout */
+  width: calc(100% - 2cm);
+  /* Adjust width to avoid overlapping */
+  max-width: 380px;
+  /* Maximum width for the form */
+  line-height: 1.8;
+}
+
+/* Exit Logo Styling */
+.exit-icon {
+  /* Set cursor and text-align for the exit logo container */
+  cursor: pointer;
+  /* Change cursor to pointer on hover */
+  text-align: right;
+  /* Align text to the right */
+}
+
+.Login {
+  margin-bottom: 1.25cm;
+}
+
+
+/* Kwame's changes */
+
+#container {
+  margin: 60px auto;
+  max-width: 400px;
+  padding: 20px;
+}
+
+
+.Login {
+  font-family: cursive;
+
+}
+
+#logoA {
+  margin-bottom: 30px;
+}
+
+.logtitle * {
+  margin: none;
+  font-family: 'Kavoon', sans-serif;
+  font-size: x-large;
+}
+
+#mem-sub-button {
+  /* Set background color, color, border, padding, border-radius, cursor, font size, font weight, transition, box-shadow, font-family for menu item buttons */
+  background-color: #BA2125;
+  /* Red background */
+  color: #fff;
+  /* White text */
+  border: none;
+  /* Remove default border */
+  padding: 12px 24px;
+  /* Button padding */
+  border-radius: 6px;
+  /* Rounded corners */
+  cursor: pointer;
+  /* Change cursor to pointer on hover */
+  transition: background-color 0.3s;
+  /* Smooth background color change on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  /* Subtle shadow */
+  font-family: 'Inter', sans-serif;
+  /* Use Inter font, fallback to sans-serif */
+}
+
+#mem-sub-button:hover {
+  /* Change background color on hover */
+  background-color: #A5191E;
+  /* Darker red */
+}
+
+
+/* Ernest's changes */
+#addmemform {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.containerB {
+  text-align: center;
+}
+
+#label {
+  display: block;
+  margin-bottom: 5px;
+  text-align: left;
+}
+
+.input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#memhead {
+  font-size: xx-large;
+  font-weight: bold;
+}
+
+#button2 {
+  /* Set background color, color, border, padding, border-radius, cursor, font size, font weight, transition, box-shadow, font-family for menu item buttons */
+  background-color: #BA2125;
+  /* Red background */
+  color: #fff;
+  /* White text */
+  border: none;
+  /* Remove default border */
+  padding: 12px 24px;
+  /* Button padding */
+  border-radius: 6px;
+  /* Rounded corners */
+  cursor: pointer;
+  /* Change cursor to pointer on hover */
+  transition: background-color 0.3s;
+  /* Smooth background color change on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  /* Subtle shadow */
+  font-family: 'Inter', sans-serif;
+  /* Use Inter font, fallback to sans-serif */
+}
+
+#button2:hover {
+  /* Change background color on hover */
+  background-color: #A5191E;
+  /* Darker red */
+}
+
+#dataForm {
+  margin-top: 20px;
+}
+
+.container{
+  text-align: center;
+}
