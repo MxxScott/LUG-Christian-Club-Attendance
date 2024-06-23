@@ -108,7 +108,7 @@ listButton.addEventListener(`click`, () => {
   const userDataCol = JSON.parse(localStorage.getItem("listData"))
   if (userDataCol !== null && authenUser(userDataCol.firstVal, userDataCol.secondVal)) {
     // Redirect to the list.html page
-    window.location.href = 'list.html';
+    window.location.href = '../list.html';
   } else {
     alert("PLease Log in first");
   }
@@ -125,7 +125,7 @@ addMemSubBtn.addEventListener('click', async (e) => {
     course: studyProgramme.value,
     level: level.value,
     contact: contact.value,
-    attendance: {}
+    attendance: []
   }
 
   try {
@@ -148,7 +148,7 @@ loginBtn.addEventListener(`click`, () => {
 
   if (authenUser(firstVal, secondVal)) {
     // if it passes the authentication, then the list page will load
-    window.location.href = 'list.html';
+    window.location.href = '../list.html';
     // keeping the data into localStorage
     const data = { firstVal, secondVal };
     localStorage.setItem(`listData`, JSON.stringify(data));

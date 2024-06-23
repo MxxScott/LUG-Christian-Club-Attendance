@@ -4,18 +4,13 @@
 // import {collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"
 
 // creating a function for authentication
-export function authenUser(firstVal, secondVal) {
+export async function authenUser(firstVal, secondVal) {
     //getting user infomation from database
+    userRef = collection(db, "Users")
+    await getDoc()
 
-    // const hashedPassword = window.crypto.subtle.digest('SHA-256', new TextEncoder().encode(secondVal));
-    // let hashedPasswordString;
-    //         hashedPassword.then((hashBuffer) => {
-    //             const hashedPasswordArray = Array.from(new Uint8Array(hashBuffer));
-    //             hashedPasswordString = hashedPasswordArray.map(b => b.toString(16).padStart(2, '0')).join('');
-    //         });
-    //         console.log(hashedPasswordString);
-    const first = `frema@sec.lug.club`;
-    const second = `logMeIntoIt`;
+    const first = `frema@club_online`;
+    const second = `clubSecretaryOfficial@frema`;
 
     if (firstVal === first && secondVal === second)
       return true
@@ -47,7 +42,7 @@ export function dynamicCreate(documents, listTable){
     td3.textContent = `${mem.role}`;
     td4.textContent = `${mem.contact}`;
     //the attendance is an object, so i am just printing the lenght of the object
-    td5.textContent = `${Object.keys(mem.attendance).length}`;
+    td5.textContent = `${mem.attendance.length}`;
     // appending to tr as children
     trEle.append(td1)
     trEle.append(td2)

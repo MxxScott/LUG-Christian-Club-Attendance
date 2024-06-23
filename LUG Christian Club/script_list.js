@@ -2,8 +2,8 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
-//   adding firestore 
-import { getFirestore, collection, addDoc, getDocs, query, where } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"
+//  adding firestore 
+import { getFirestore, collection, doc, addDoc, getDocs, query, where, arrayUnion, updateDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -52,7 +52,7 @@ const listTable = document.getElementById(`our-list-table`);
 const attBtn = document.getElementById("sidebar_button");
 HomeNav.addEventListener(`click`, () => {
   // Redirect to the index.html page
-  window.location.href = `index.html`;
+  window.location.href = `public/index.html`;
 });
 
 // Get the view buttons
@@ -100,11 +100,11 @@ document.addEventListener(`DOMContentLoaded`, async () => {
 // ************************************************
 const mainDiv = document.getElementById("main_section");
 // Object for collecting attendance data{}
-const attendanceObj = {};
+let attendanceList = [];
 // creating a click flagg
 let attClicked = false;
 // creating the attendance form dynamically
-attBtn.addEventListener(`click`, () => {
+attBtn.addEventListener(`click`, (e) => {
   // creating a form for making attendance when the attendance btn is clicked
   const attFormContainer = createEle("div", "att-form-container");
   if (attBtn.childNodes[3].textContent === "Attendance"){
@@ -119,7 +119,7 @@ attBtn.addEventListener(`click`, () => {
     const dateInput = createEle("input", "att-date-input");
     dateInput.type = "date";
     datePick.append(dateInput);
-    
+  
     // creating a list element to preview list of members and a checkbox to mark them as attended
     const attListMarking = createEle("ul", "att-list-marking");
     // appending the lis to the form container
@@ -127,33 +127,73 @@ attBtn.addEventListener(`click`, () => {
 
     // This function iterates over an array named 'documents' (presumably containing attendance data)
     documents.forEach((attendance) => {
-
+      // console.log(attendance)
       // Create a list item element with the class "mem-mark"
       const memMark = createEle("li", "mem-mark");
       attListMarking.append(memMark); // Append the list item to an element "attListMarking" 
-
+      // creating a hidden element to keep id of users
+      const memIdSpan = createEle("span", "mem-id-span")
       // Create a span element with the class "mem-name-span"
       const memNameSpan = createEle("span", "mem-name-span");
-      memMark.append(memNameSpan); // Append the span element to the list item
+      memMark.append(memNameSpan) // Append the span element to the list item
+      memMark.append(memIdSpan)
 
       // Create a checkbox element with the class "tick-mem" and set its type to "checkbox"
       const tickMem = createEle("input", "tick-mem");
       tickMem.type = "checkbox";
-      memMark.append(tickMem); // Append the checkbox element to the list item
-      // Set the text content of the span element to the 'name' property of the current attendance object
+      memMark.append(tickMem); 
+    
       memNameSpan.textContent = `${attendance.name}`;
-      // adding every change and keeping an object to allow for universal update
-      tickMem.addEventListener("click", ()=>{
-        // attendanceObj.attendance.name = tickMem.checked;
-        // console.log(attendanceObj)
-        // console.log(attendance.name)
-        // console.log(dateInput.value)
-      })
+      memIdSpan.textContent =  `${attendance.id}`
+      memIdSpan.style.display = "none"
+      
     });
+    
+    attListMarking.addEventListener("click", (e)=>{
+      // making sure date is alreaady choosen
+      if (dateInput.value === ""){
+        alert("PLease choose date first!!")
+        e.target.checked = false
+      }else{
+        //if its a checkbox
+        if (e.target.classList.contains("tick-mem")){
+          const isAvailable = e.target.checked
+          const attendeeId = e.target.parentElement.querySelector(".mem-id-span").textContent
+          // checking if member has already been ticked
+          const existingAtten = attendanceList.find(a => a.id === attendeeId);
+          if (isAvailable){
+            if (!existingAtten){
+              attendanceList.push({id: attendeeId, date: dateInput.value})
+            }
+          }else{
+            if (existingAtten){
+              attendanceList = attendanceList.filter(a => a.id !== attendeeId)
+            }
+          }
+        }   
+      }
+    
+    })
     const submitAttBtn = createEle("button", "atten-sub");
     submitAttBtn.textContent = "Submit Attendance"
     attFormContainer.append(submitAttBtn);
     attBtn.childNodes[3].textContent = "Member Listing"
+    submitAttBtn.addEventListener("click", (e)=>{
+      // update database with attendance
+      attendanceList.forEach(async(attendance)=>{
+        const id = attendance.id
+        const date = attendance.date
+
+        const memRef = doc(db, "members", id)
+        await updateDoc(memRef, {attendance: arrayUnion(date)}).then(()=>{
+          console.log("done")
+        }).catch((err)=>{
+          console.log(err)
+        })
+      })
+
+      attendanceList = []
+    })
    
   }
   else{
@@ -164,7 +204,7 @@ attBtn.addEventListener(`click`, () => {
   }
 
 })
-//redering some functions based on the availability of the attendace psage
+//redering some functions based on the availability of the attendace page
   const attFormPage = document.querySelectorAll(".att-form-container");
 
   // will continue from here
@@ -217,7 +257,7 @@ addMemSubBtn.addEventListener('click', async (e) => {
     course: studyProgramme.value,
     level: level.value,
     contact: contact.value,
-    attendance: {}
+    attendance: []
   }
 
   try {
@@ -225,6 +265,7 @@ addMemSubBtn.addEventListener('click', async (e) => {
     const docRef = await addDoc(collection(db, "members"), memberData)
     alert(`${memberData.name} Added successfully`);
   } catch (error) {
+    alert(`error adding ${memberData.name} to database, Please try again`)
     throw error;
   }
   // console.log(name.value)
@@ -248,11 +289,10 @@ searcher.addEventListener("keyup", async(e)=>{
         ele.remove();
       })
       dynamicCreate(documents, listTable);
-      // alert("Enter something to search for");
       return
     }
     const memRef = collection(db, "members");
-    const myQuery = query(memRef, where("course", "==", key))
+    const myQuery = query(memRef, where("name", "==", key))
     // getting the results after runing the query
     const myQuerySnapShot = await getDocs(myQuery);
     // dynamically displaying search results to the interphase
