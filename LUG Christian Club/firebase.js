@@ -106,7 +106,7 @@ exitAddMemIcon.addEventListener(`click`, () => {
 listButton.addEventListener(`click`, () => {
   // getting authData from localStorage
   const userDataCol = JSON.parse(localStorage.getItem("listData"))
-  if (userDataCol !== null && authenUser(userDataCol.firstVal, userDataCol.secondVal)) {
+  if (userDataCol !== null && authenUser(userDataCol.firstVal, userDataCol.secondVal)){
     // Redirect to the list.html page
     window.location.href = 'list.html';
   } else {
