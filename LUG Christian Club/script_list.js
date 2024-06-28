@@ -48,6 +48,9 @@ import { createEle } from "./import_func.js";
 const HomeNav = document.getElementById(`home-button-list`);
 // getting the table element
 const listTable = document.getElementById(`our-list-table`);
+// getting the list head
+const listheadremoval = document.getElementById(`list-head-removal`);
+const gridlistcont = document.querySelector(".listcont");
 // getting the attendance button
 const attBtn = document.getElementById("sidebar_button");
 HomeNav.addEventListener(`click`, () => {
@@ -75,6 +78,8 @@ listViewButton.addEventListener('mouseup', () => {
   active = inactivetemp;
   listTable.classList.remove('grid_mode');
   listTable.classList.add('list_mode');
+  listheadremoval.style.display = `flex`
+  gridlistcont.classList.remove("grid_listcont");
 });
 
 gridViewButton.addEventListener('mousedown', () => {
@@ -88,6 +93,8 @@ gridViewButton.addEventListener('mouseup', () => {
   active = inactivetemp;
   listTable.classList.remove('list_mode');
   listTable.classList.add('grid_mode');
+  listheadremoval.style.display = `none`
+  gridlistcont.classList.add("grid_listcont");
 });
 
 // **************************************************************

@@ -304,13 +304,18 @@ body {
 }
 
 /* Style for the list content */
-.listcontent {
+.listcont .listcontent {
   display: flex; /* Enable flexbox layout */
   flex-direction: column; /* Arrange flex items in a column */
   height: calc(100% - 2.5rem); /* Set height to remaining space */
   overflow-y: auto;
 }
+/* style for list content in grid mode */
+.grid_listcont .listcontent {
+  height: calc(100% - 0.3rem); /* Set height to remaining space */
+  overflow-y: auto;
 
+}
 /* Style for the table within the list */
 table {
   width: 100%; /* Take up full width of parent */
@@ -474,23 +479,30 @@ table {
 /* Grid View Styles */
 .grid_mode {
   display: grid; /* Enable grid layout for the table */
-  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); /* Responsive grid columns */
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); /* Responsive grid columns */
   gap: 0.5rem; /* Spacing between grid items */
+  overflow: scroll;
+  padding: 1rem 1rem;
 }
 
-.grid_mode tr {
+.grid_mode .other_rows {
   display: flex;
   flex-direction: column; /* Stack table cells vertically in grid view */
   border: 1px solid #e0e0e0; /* Add borders to each row in grid view */
   border-radius: 1rem; /* Optional rounded corners for grid items */
   padding: 1rem;
+  box-shadow: .04rem .08rem  rgb(71, 71, 71);
+  cursor: pointer;
 }
 
 .grid_mode td {
   border: none; /* Remove cell borders in grid view */
+  width: 100%;
+  border-bottom: 0.05rem solid black;
 }
 
 .grid_mode .col1 {
   font-weight: bold; /* Make the Member Name bold in grid view */
 }
 
+/* make the grid scrollable */
