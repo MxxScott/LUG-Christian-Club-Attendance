@@ -308,7 +308,7 @@ body {
   display: flex; /* Enable flexbox layout */
   flex-direction: column; /* Arrange flex items in a column */
   height: calc(100% - 2.5rem); /* Set height to remaining space */
-  overflow-y: auto; /* Enable vertical scroll */
+  overflow-y: auto;
 }
 
 /* Style for the table within the list */
@@ -321,12 +321,12 @@ table {
 }
 
 /* Style for table rows */
-tr {
+.list_mode tr {
   height: 2.5rem; /* Fixed row height */
 }
 
 /* Style for table cells */
-td {
+.list_mode td {
   text-align: left; /* Align text to the left */
   padding: 0 1rem; /* Add padding */
   border-bottom: #e0e0e0 solid 0.05rem; /* Add a light gray bottom border */
@@ -344,27 +344,30 @@ td {
   z-index: 100; /* Ensure it's on top of other elements */
 }
 
-.col1 {
+
+.list_mode .col1 {
   color: #828282;
   width: 25%;
 }
 
-.col2 {
+.list_mode .col2 {
   width: 20%;
 }
 
-.col3 {
+.list_mode .col3 {
   width: 15%;
 }
 
-.col4 {
+.list_mode .col4 {
   width: 25%;
 }
 
-.col5 {
+.list_mode .col5 {
   width: 15%;
   text-align: center;
 }
+
+
 
 .first_row {
   font-family: "Inter", sans-serif; /* Use Inter font */
@@ -466,5 +469,28 @@ td {
 #memhead {
   font-size: xx-large;
   font-weight: bold;
+}
+
+/* Grid View Styles */
+.grid_mode {
+  display: grid; /* Enable grid layout for the table */
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); /* Responsive grid columns */
+  gap: 0.5rem; /* Spacing between grid items */
+}
+
+.grid_mode tr {
+  display: flex;
+  flex-direction: column; /* Stack table cells vertically in grid view */
+  border: 1px solid #e0e0e0; /* Add borders to each row in grid view */
+  border-radius: 1rem; /* Optional rounded corners for grid items */
+  padding: 1rem;
+}
+
+.grid_mode td {
+  border: none; /* Remove cell borders in grid view */
+}
+
+.grid_mode .col1 {
+  font-weight: bold; /* Make the Member Name bold in grid view */
 }
 

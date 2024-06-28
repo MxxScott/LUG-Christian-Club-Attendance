@@ -73,6 +73,8 @@ listViewButton.addEventListener('mouseup', () => {
   inactivetemp = inactive;
   inactive = active;
   active = inactivetemp;
+  listTable.classList.remove('grid_mode');
+  listTable.classList.add('list_mode');
 });
 
 gridViewButton.addEventListener('mousedown', () => {
@@ -84,6 +86,8 @@ gridViewButton.addEventListener('mouseup', () => {
   inactivetemp = inactive;
   inactive = active;
   active = inactivetemp;
+  listTable.classList.remove('list_mode');
+  listTable.classList.add('grid_mode');
 });
 
 // **************************************************************
