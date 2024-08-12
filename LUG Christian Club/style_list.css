@@ -506,3 +506,9 @@ table {
 }
 
 /* make the grid scrollable */
+
+.att-date-input {
+  width: 100%;
+  height: 100%;
+  border-radius: 0.5rem;
+}
