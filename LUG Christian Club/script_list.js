@@ -53,9 +53,29 @@ const listheadremoval = document.getElementById(`list-head-removal`);
 const gridlistcont = document.querySelector(".listcont");
 // getting the attendance button
 const attBtn = document.getElementById("sidebar_button");
+const profileButton = document.getElementById("profile-button");
+const logoutButton = document.getElementById("logout-button");
+
 HomeNav.addEventListener(`click`, () => {
   // Redirect to the index.html page
   window.location.href = `index.html`;
+});
+
+// Profile button event listener
+profileButton.addEventListener(`click`, () => {
+  window.location.href = `profile.html`;
+});
+
+// Logout button event listener
+logoutButton.addEventListener(`click`, () => {
+  // Clear authentication data
+  localStorage.removeItem('listData');
+
+  // Show confirmation
+  if (confirm('Are you sure you want to logout?')) {
+    // Redirect to login page
+    window.location.href = 'index.html';
+  }
 });
 
 // Get the view buttons
