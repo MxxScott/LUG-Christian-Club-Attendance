@@ -169,6 +169,5 @@ if (loginBtn) {
     } else {
       alert("Please Enter valid authentication details");
     }
-  })
-
-  const userDataCol = JSON.parse(localStorage.getItem("listData"))
+  });
+}
