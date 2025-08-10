@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Add Member</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .debug-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .success {
+            color: green;
+            margin-top: 10px;
+        }
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
+        .info {
+            color: blue;
+            margin-top: 10px;
+        }
+        #console-output {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 15px;
+            margin-top: 20px;
+            font-family: monospace;
+            font-size: 12px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Debug Add Member Functionality</h1>
+        
+        <div class="debug-section">
+            <h3>1. Check Authentication Status</h3>
+            <button onclick="checkAuth()">Check Authentication</button>
+            <button onclick="clearAuth()">Clear Authentication</button>
+            <button onclick="setAuth()">Set Test Authentication</button>
+            <div id="auth-status"></div>
+        </div>
+        
+        <div class="debug-section">
+            <h3>2. Test Add Member Form</h3>
+            <button onclick="showForm()">Show Add Member Form</button>
+            <button onclick="hideForm()">Hide Add Member Form</button>
+            <div id="form-status"></div>
+        </div>
+        
+        <div class="debug-section">
+            <h3>3. Add Member Form</h3>
+            <form id="memberForm">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="role">Role:</label>
+                    <input type="text" id="role" name="role" required>
+                </div>
+                <div class="form-group">
+                    <label for="course">Course:</label>
+                    <select id="course" name="course" required>
+                        <option value="economics">BA Economics and International Relations</option>
+                        <option value="politics">BA Politics and International Relations</option>
+                        <option value="accounting">BSc Accounting and Finance</option>
+                        <option value="compsci">BSc Computer Science</option>
+                        <option value="business">BSc Business Management</option>
+                        <option value="marketing">BSc Marketing</option>
+                        <option value="law">LLB Law</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="level">Level:</label>
+                    <select id="level" name="level" required>
+                        <option value="fdn">Foundation Programme</option>
+                        <option value="100">100-Level</option>
+                        <option value="200">200-Level</option>
+                        <option value="300">300-Level</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="contact">Contact:</label>
+                    <input type="text" id="contact" name="contact" required>
+                </div>
+                <button type="submit">Add Member</button>
+            </form>
+            <div id="add-status"></div>
+        </div>
+        
+        <div class="debug-section">
+            <h3>4. Console Output</h3>
+            <button onclick="clearConsole()">Clear Console</button>
+            <div id="console-output"></div>
+        </div>
+    </div>
+
+    <script type="module">
+        // Firebase configuration
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+        import { authenUser } from "./import_func.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDMVTwr45d0xPK5He6pv1bibApte1flpds",
+            authDomain: "christian-club-online.firebaseapp.com",
+            projectId: "christian-club-online",
+            storageBucket: "christian-club-online.appspot.com",
+            messagingSenderId: "599223982319",
+            appId: "1:599223982319:web:2aa246d44bae1ddc6ca31a",
+            measurementId: "G-PSCB7CHW3N"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        function log(message) {
+            const consoleOutput = document.getElementById('console-output');
+            const timestamp = new Date().toLocaleTimeString();
+            consoleOutput.innerHTML += `[${timestamp}] ${message}\n`;
+            consoleOutput.scrollTop = consoleOutput.scrollHeight;
+            console.log(message);
+        }
+
+        window.checkAuth = function() {
+            const authData = localStorage.getItem("listData");
+            const statusDiv = document.getElementById('auth-status');
+            
+            log('Checking authentication...');
+            
+            if (authData) {
+                const parsed = JSON.parse(authData);
+                log(`Auth data found: ${JSON.stringify(parsed)}`);
+                statusDiv.innerHTML = `<div class="success">Authentication data found: ${parsed.firstVal}</div>`;
+            } else {
+                log('No authentication data found');
+                statusDiv.innerHTML = `<div class="error">No authentication data found</div>`;
+            }
+        };
+
+        window.clearAuth = function() {
+            localStorage.removeItem("listData");
+            log('Authentication data cleared');
+            document.getElementById('auth-status').innerHTML = '<div class="info">Authentication data cleared</div>';
+        };
+
+        window.setAuth = function() {
+            const authData = { firstVal: "admin", secondVal: "admin123" };
+            localStorage.setItem("listData", JSON.stringify(authData));
+            log('Test authentication data set');
+            document.getElementById('auth-status').innerHTML = '<div class="success">Test authentication data set</div>';
+        };
+
+        window.showForm = async function() {
+            const statusDiv = document.getElementById('form-status');
+            const authData = JSON.parse(localStorage.getItem("listData") || "null");
+            
+            log('Attempting to show form...');
+            
+            if (authData && await authenUser(authData.firstVal, authData.secondVal)) {
+                log('Authentication successful, form should show');
+                statusDiv.innerHTML = '<div class="success">Authentication successful! Form should be visible.</div>';
+            } else {
+                log('Authentication failed');
+                statusDiv.innerHTML = '<div class="error">Authentication failed. Cannot show form.</div>';
+            }
+        };
+
+        window.hideForm = function() {
+            log('Form hide requested');
+            document.getElementById('form-status').innerHTML = '<div class="info">Form hide requested</div>';
+        };
+
+        // Handle form submission
+        document.getElementById('memberForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                role: document.getElementById('role').value,
+                course: document.getElementById('course').value,
+                level: document.getElementById('level').value,
+                contact: document.getElementById('contact').value,
+                attendance: []
+            };
+            
+            log(`Attempting to add member: ${formData.name}`);
+            
+            try {
+                const docRef = await addDoc(collection(db, "members"), formData);
+                log(`Member added successfully with ID: ${docRef.id}`);
+                document.getElementById('add-status').innerHTML = `<div class="success">Member ${formData.name} added successfully!</div>`;
+                
+                // Clear form
+                document.getElementById('memberForm').reset();
+            } catch (error) {
+                log(`Error adding member: ${error.message}`);
+                document.getElementById('add-status').innerHTML = `<div class="error">Error adding member: ${error.message}</div>`;
+            }
+        });
+
+        window.clearConsole = function() {
+            document.getElementById('console-output').innerHTML = '';
+        };
+
+        // Initialize
+        log('Debug page loaded');
+        log('Firebase initialized successfully');
+    </script>
+</body>
+</html>
