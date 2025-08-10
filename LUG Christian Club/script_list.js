@@ -24,13 +24,13 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const db = getFirestore(app);
 
-//importing neccessary functions
-import { authenUser, dynamicCreate, deboucing } from "./import_func.js";
+//importing necessary functions
+import { authenUser, dynamicCreate, debouncing } from "./import_func.js";
 // seclecting necessary elements
 const loginBtn = document.getElementById(`button2`);
 const userName = document.getElementById("Username");
 const userPassword = document.getElementById("password");
-const addMemSubBtn = document.getElementById(`mem-sub-butn`);
+const addMemSubBtn = document.getElementById(`mem-sub-button`);
 const name = document.getElementById(`name`);
 const role = document.getElementById(`role`);
 const studyProgramme = document.getElementById(`studyProgramme`);
@@ -118,7 +118,7 @@ let attClicked = false;
 attBtn.addEventListener(`click`, (e) => {
   // creating a form for making attendance when the attendance btn is clicked
   const attFormContainer = createEle("div", "att-form-container");
-  if (attBtn.childNodes[3].textContent === "Attendance"){
+  if (attBtn.childNodes[3].textContent === "Attendance") {
     attClicked = true
     mainDiv.append(attFormContainer);
 
@@ -130,7 +130,7 @@ attBtn.addEventListener(`click`, (e) => {
     const dateInput = createEle("input", "att-date-input");
     dateInput.type = "date";
     datePick.append(dateInput);
-  
+
     // creating a list element to preview list of members and a checkbox to mark them as attended
     const attListMarking = createEle("ul", "att-list-marking");
     // appending the lis to the form container
@@ -152,55 +152,55 @@ attBtn.addEventListener(`click`, (e) => {
       // Create a checkbox element with the class "tick-mem" and set its type to "checkbox"
       const tickMem = createEle("input", "tick-mem");
       tickMem.type = "checkbox";
-      memMark.append(tickMem); 
-    
+      memMark.append(tickMem);
+
       memNameSpan.textContent = `${attendance.name}`;
-      memIdSpan.textContent =  `${attendance.id}`
+      memIdSpan.textContent = `${attendance.id}`
       memIdSpan.style.display = "none"
-      
+
     });
-    
-    attListMarking.addEventListener("click", (e)=>{
+
+    attListMarking.addEventListener("click", (e) => {
       // making sure date is alreaady choosen
-      if (dateInput.value === ""){
+      if (dateInput.value === "") {
         alert("PLease choose date first!!")
         e.target.checked = false
-      }else{
+      } else {
         //if its a checkbox
-        if (e.target.classList.contains("tick-mem")){
+        if (e.target.classList.contains("tick-mem")) {
           const isAvailable = e.target.checked
           const attendeeId = e.target.parentElement.querySelector(".mem-id-span").textContent
           // checking if member has already been ticked
           const existingAtten = attendanceList.find(a => a.id === attendeeId);
-          if (isAvailable){
-            if (!existingAtten){
-              attendanceList.push({id: attendeeId, date: dateInput.value})
+          if (isAvailable) {
+            if (!existingAtten) {
+              attendanceList.push({ id: attendeeId, date: dateInput.value })
             }
-          }else{
-            if (existingAtten){
+          } else {
+            if (existingAtten) {
               attendanceList = attendanceList.filter(a => a.id !== attendeeId)
             }
           }
-        }   
+        }
       }
-    
+
     })
     const submitAttBtn = createEle("button", "atten-sub");
     submitAttBtn.textContent = "Submit Attendance"
     attFormContainer.append(submitAttBtn);
     attBtn.childNodes[3].textContent = "Member Listing"
-    submitAttBtn.addEventListener("click", (e)=>{
+    submitAttBtn.addEventListener("click", (e) => {
       // update database with attendance
       submitAttBtn.textContent = "Loading......"
-      attendanceList.forEach(async(attendance)=>{
+      attendanceList.forEach(async (attendance) => {
         const id = attendance.id
         const date = attendance.date
 
         const memRef = doc(db, "members", id)
-        await updateDoc(memRef, {attendance: arrayUnion(date)}).then(()=>{
+        await updateDoc(memRef, { attendance: arrayUnion(date) }).then(() => {
           window.location.reload()
           console.log("done")
-        }).catch((err)=>{
+        }).catch((err) => {
           submitAttBtn.textContent = "Submit Attendance"
           console.log(err)
         })
@@ -208,9 +208,9 @@ attBtn.addEventListener(`click`, (e) => {
 
       attendanceList = []
     })
-   
+
   }
-  else{
+  else {
     attBtn.childNodes[3].textContent = "Attendance"
     attClicked = false
     // removing the attendance list from the document to be able to view the member list
@@ -223,10 +223,10 @@ attBtn.addEventListener(`click`, (e) => {
 
 // **********************************************
 // Event listener for the addmem button
-addmemButton.addEventListener(`click`, () => {
+addmemButton.addEventListener(`click`, async () => {
   // getting authData from localStorage
   const userDataCol = JSON.parse(localStorage.getItem("listData"))
-  if (userDataCol !== null && authenUser(userDataCol.firstVal, userDataCol.secondVal)) {
+  if (userDataCol !== null && await authenUser(userDataCol.firstVal, userDataCol.secondVal)) {
     // the form for the membership form can now be shown
     // Show the addMem form with a smooth transition
     addmemForm.style.display = `grid`; // Show the form
@@ -235,7 +235,7 @@ addmemButton.addEventListener(`click`, () => {
       addmemForm.style.opacity = 1; // Set opacity to 1 after the delay
     }, 10); // 10 milliseconds delay
   } else {
-    alert("PLease Log in first");
+    alert("Please Log in first");
     window.location.href = `index.html`;
   }
 });
@@ -284,13 +284,13 @@ addMemSubBtn.addEventListener('click', async (e) => {
 const searcher = document.getElementById("searchbar");
 
 
-searcher.addEventListener("keyup", async(e)=>{
-  async function searchingData(key){
+searcher.addEventListener("keyup", async (e) => {
+  async function searchingData(key) {
     // cheking if the key(string to be serched for) is empty or undefined
-    if (!key || key.trim() === ""){
-    //deleting the elements that are already previewed to the screen to be able to present search results
+    if (!key || key.trim() === "") {
+      //deleting the elements that are already previewed to the screen to be able to present search results
       const rowELe = document.querySelectorAll(".other_rows");
-      rowELe.forEach((ele)=>{
+      rowELe.forEach((ele) => {
         ele.remove();
       })
       dynamicCreate(documents, listTable);
@@ -301,23 +301,23 @@ searcher.addEventListener("keyup", async(e)=>{
     // getting the results after runing the query
     const myQuerySnapShot = await getDocs(myQuery);
     // dynamically displaying search results to the interphase
-    const searchResults = myQuerySnapShot.docs.map((doc)=>({
+    const searchResults = myQuerySnapShot.docs.map((doc) => ({
       id: doc.id, ...doc.data()
     }))
     // console.log(searchResults);                                                                      
 
     return searchResults;
   }
-    // getting the input that users will possibly type
-    const searchQueryVal = searcher.value.trim();
-    //deleting the elements that are already previewed to the screen to be able to present search results
-    const rowELe = document.querySelectorAll(".other_rows");
-    rowELe.forEach((ele)=>{
-      ele.remove();
-    })
-    // console.log(rowELe)
-    const searchData = deboucing(await searchingData(searchQueryVal), 700);
-    if (searchData){
-      dynamicCreate(searchData, listTable);
-    }
+  // getting the input that users will possibly type
+  const searchQueryVal = searcher.value.trim();
+  //deleting the elements that are already previewed to the screen to be able to present search results
+  const rowELe = document.querySelectorAll(".other_rows");
+  rowELe.forEach((ele) => {
+    ele.remove();
+  })
+  // console.log(rowELe)
+  const searchData = await searchingData(searchQueryVal);
+  if (searchData) {
+    dynamicCreate(searchData, listTable);
+  }
 })

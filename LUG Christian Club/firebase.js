@@ -63,10 +63,10 @@ loginButton.addEventListener(`click`, () => {
 });
 
 // Event listener for the addmem button
-addmemButton.addEventListener(`click`, () => {
+addmemButton.addEventListener(`click`, async () => {
   // getting authData from localStorage
   const userDataCol = JSON.parse(localStorage.getItem("listData"))
-  if (userDataCol !== null && authenUser(userDataCol.firstVal, userDataCol.secondVal)) {
+  if (userDataCol !== null && await authenUser(userDataCol.firstVal, userDataCol.secondVal)) {
     // the form for the membership form can now be shown
     // Show the addMem form with a smooth transition
     addmemForm.style.display = `grid`; // Show the form
@@ -75,7 +75,7 @@ addmemButton.addEventListener(`click`, () => {
       addmemForm.style.opacity = 1; // Set opacity to 1 after the delay
     }, 10); // 10 milliseconds delay
   } else {
-    alert("PLease Log in first");
+    alert("Please Log in first");
     window.location.href = `index.html`;
   }
 });
@@ -103,14 +103,14 @@ exitAddMemIcon.addEventListener(`click`, () => {
 });
 
 // Event listener for the members list button
-listButton.addEventListener(`click`, () => {
+listButton.addEventListener(`click`, async () => {
   // getting authData from localStorage
   const userDataCol = JSON.parse(localStorage.getItem("listData"))
-  if (userDataCol !== null && authenUser(userDataCol.firstVal, userDataCol.secondVal)){
+  if (userDataCol !== null && await authenUser(userDataCol.firstVal, userDataCol.secondVal)) {
     // Redirect to the list.html page
     window.location.href = 'list.html';
   } else {
-    alert("PLease Log in first");
+    alert("Please Log in first");
   }
 });
 
@@ -139,14 +139,14 @@ addMemSubBtn.addEventListener('click', async (e) => {
   // alert(JSON.stringify(name.value));
 })
 
-// loging into the system
-loginBtn.addEventListener(`click`, () => {
+// logging into the system
+loginBtn.addEventListener(`click`, async () => {
 
   // getting the form field values
   const firstVal = userName.value;
   const secondVal = userPassword.value;
 
-  if (authenUser(firstVal, secondVal)) {
+  if (await authenUser(firstVal, secondVal)) {
     // if it passes the authentication, then the list page will load
     window.location.href = 'list.html';
     // keeping the data into localStorage
@@ -156,7 +156,7 @@ loginBtn.addEventListener(`click`, () => {
     loginForm.style.opacity = 0;
     loginForm.style.display = `none`;
   } else {
-    alert("Please Enter a valid authenticationn details");
+    alert("Please Enter valid authentication details");
   }
 })
 
