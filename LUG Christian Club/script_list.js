@@ -102,10 +102,17 @@ gridViewButton.addEventListener('mouseup', () => {
 let membersQuery;
 let documents;
 document.addEventListener(`DOMContentLoaded`, async () => {
-  membersQuery = await getDocs(collection(db, "members"));
-  documents = membersQuery.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-  // creating elements for each member
-  dynamicCreate(documents, listTable);
+  try {
+    console.log("Loading members from database...");
+    membersQuery = await getDocs(collection(db, "members"));
+    documents = membersQuery.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+    console.log(`Loaded ${documents.length} members from database`);
+    // creating elements for each member
+    dynamicCreate(documents, listTable);
+  } catch (error) {
+    console.error("Error loading members:", error);
+    alert("Error loading members from database. Please check Firebase permissions.");
+  }
 })
 
 // ************************************************
