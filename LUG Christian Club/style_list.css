@@ -392,11 +392,11 @@ body {
 
 .logout-button {
   background-color: rgba(255, 255, 255, 0.1) !important;
-  color: #ff6b6b !important;
+  color: #BA2125 !important;
 }
 
 .logout-button:hover {
-  background-color: #ff6b6b !important;
+  background-color: #BA2125 !important;
   color: white !important;
 }
 
