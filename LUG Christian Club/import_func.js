@@ -6,6 +6,23 @@ import { db } from "./firebase.js";
 
 // creating a function for authentication
 export async function authenUser(firstVal, secondVal) {
+  // Hardcoded credentials for immediate access
+  const validCredentials = [
+    { username: "admin", password: "admin123" },
+    { username: "user", password: "password123" },
+    { username: "test", password: "test123" }
+  ];
+
+  // Check against hardcoded credentials first
+  const isValidCredential = validCredentials.some(cred => 
+    cred.username === firstVal && cred.password === secondVal
+  );
+
+  if (isValidCredential) {
+    console.log("Authentication successful with hardcoded credentials");
+    return true;
+  }
+
   try {
     //getting user information from database
     const userRef = collection(db, "Users");
@@ -20,22 +37,9 @@ export async function authenUser(firstVal, secondVal) {
       }
     });
 
-    // Fallback for testing if no users in database
-    if (querySnapshot.size === 0 && firstVal === "admin" && secondVal === "admin123") {
-      console.log("Using fallback authentication for testing");
-      return true;
-    }
-
     return isValid;
   } catch (error) {
     console.error("Authentication error:", error);
-
-    // Fallback for testing if database is not accessible
-    if (firstVal === "admin" && secondVal === "admin123") {
-      console.log("Using fallback authentication due to database error");
-      return true;
-    }
-
     return false;
   }
 }
