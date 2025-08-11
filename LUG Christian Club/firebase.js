@@ -51,113 +51,123 @@ const listButton = document.getElementById(`list-button`);
 
 
 // Event listener for the login button
-loginButton.addEventListener(`click`, () => {
-  // Show the login form with a smooth transition
-  loginForm.style.display = `grid`; // Show the form
-  loginForm.style.transition = `opacity 0.5s ease-in-out`; // Set transition effect
-  setTimeout(() => { // Delay the opacity change
-    loginForm.style.opacity = 1; // Set opacity to 1 after the delay
-  }, 10); // 10 milliseconds delay
-
-
-});
+if (loginButton) {
+  loginButton.addEventListener(`click`, () => {
+    // Show the login form with a smooth transition
+    loginForm.style.display = `grid`; // Show the form
+    loginForm.style.transition = `opacity 0.5s ease-in-out`; // Set transition effect
+    setTimeout(() => { // Delay the opacity change
+      loginForm.style.opacity = 1; // Set opacity to 1 after the delay
+    }, 10); // 10 milliseconds delay
+  });
+}
 
 // Event listener for the addmem button
-addmemButton.addEventListener(`click`, () => {
-  // getting authData from localStorage
-  const userDataCol = JSON.parse(localStorage.getItem("listData"))
-  if (userDataCol !== null && authenUser(userDataCol.firstVal, userDataCol.secondVal)) {
-    // the form for the membership form can now be shown
-    // Show the addMem form with a smooth transition
-    addmemForm.style.display = `grid`; // Show the form
-    addmemForm.style.transition = `opacity 0.5s ease-in-out`; // Set transition effect
-    setTimeout(() => { // Delay the opacity change
-      addmemForm.style.opacity = 1; // Set opacity to 1 after the delay
-    }, 10); // 10 milliseconds delay
-  } else {
-    alert("PLease Log in first");
-    window.location.href = `index.html`;
-  }
-});
+if (addmemButton) {
+  addmemButton.addEventListener(`click`, async () => {
+    // getting authData from localStorage
+    const userDataCol = JSON.parse(localStorage.getItem("listData"))
+    if (userDataCol !== null && await authenUser(userDataCol.firstVal, userDataCol.secondVal)) {
+      // the form for the membership form can now be shown
+      // Show the addMem form with a smooth transition
+      addmemForm.style.display = `grid`; // Show the form
+      addmemForm.style.transition = `opacity 0.5s ease-in-out`; // Set transition effect
+      setTimeout(() => { // Delay the opacity change
+        addmemForm.style.opacity = 1; // Set opacity to 1 after the delay
+      }, 10); // 10 milliseconds delay
+    } else {
+      alert("Please Log in first");
+      window.location.href = `index.html`;
+    }
+  });
+}
 
 // Event listener for the exit logo button for login form
-exitLoginIcon.addEventListener(`click`, () => {
-  // Hide the login form with a smooth transition
-  // loginForm.style.opacity = 1; // Start with opacity 1
-  loginForm.style.transition = `opacity 0.5s ease-in-out`; // Set transition effect
-  setTimeout(() => { // Delay the opacity change
-    loginForm.style.opacity = 0; // Set opacity to 0 after the delay
-    loginForm.style.display = `none`; // Hide the form after the delays
-  }, 10); // 10 milliseconds delay
-});
+if (exitLoginIcon) {
+  exitLoginIcon.addEventListener(`click`, () => {
+    // Hide the login form with a smooth transition
+    // loginForm.style.opacity = 1; // Start with opacity 1
+    loginForm.style.transition = `opacity 0.5s ease-in-out`; // Set transition effect
+    setTimeout(() => { // Delay the opacity change
+      loginForm.style.opacity = 0; // Set opacity to 0 after the delay
+      loginForm.style.display = `none`; // Hide the form after the delays
+    }, 10); // 10 milliseconds delay
+  });
+}
 
 // Event listener for the exit logo button for add member form
-exitAddMemIcon.addEventListener(`click`, () => {
-  // Hide the add member form with a smooth transition
-  addmemForm.style.opacity = 1; // Start with opacity 1
-  addmemForm.style.transition = `opacity 0.5s ease-in-out`; // Set transition effect
-  setTimeout(() => { // Delay the opacity change
-    addmemForm.style.opacity = 0; // Set opacity to 0 after the delay
-    addmemForm.style.display = `none`; // Hide the form after the delays
-  }, 10); // 10 milliseconds delay
-});
+if (exitAddMemIcon) {
+  exitAddMemIcon.addEventListener(`click`, () => {
+    // Hide the add member form with a smooth transition
+    addmemForm.style.opacity = 1; // Start with opacity 1
+    addmemForm.style.transition = `opacity 0.5s ease-in-out`; // Set transition effect
+    setTimeout(() => { // Delay the opacity change
+      addmemForm.style.opacity = 0; // Set opacity to 0 after the delay
+      addmemForm.style.display = `none`; // Hide the form after the delays
+    }, 10); // 10 milliseconds delay
+  });
+}
 
 // Event listener for the members list button
-listButton.addEventListener(`click`, () => {
-  // getting authData from localStorage
-  const userDataCol = JSON.parse(localStorage.getItem("listData"))
-  if (userDataCol !== null && authenUser(userDataCol.firstVal, userDataCol.secondVal)){
-    // Redirect to the list.html page
-    window.location.href = 'list.html';
-  } else {
-    alert("PLease Log in first");
-  }
-});
+if (listButton) {
+  listButton.addEventListener(`click`, async () => {
+    // getting authData from localStorage
+    const userDataCol = JSON.parse(localStorage.getItem("listData"))
+    if (userDataCol !== null && await authenUser(userDataCol.firstVal, userDataCol.secondVal)) {
+      // Redirect to the list.html page
+      window.location.href = 'list.html';
+    } else {
+      alert("Please Log in first");
+    }
+  });
+}
 
 // adding a member to the database
-addMemSubBtn.addEventListener('click', async (e) => {
-  // making sure empty fields are not submited to the database
-  e.preventDefault();
-  // getting the input field values all in one object
-  const memberData = {
-    name: name.value,
-    role: role.value,
-    course: studyProgramme.value,
-    level: level.value,
-    contact: contact.value,
-    attendance: []
-  }
+if (addMemSubBtn) {
+  addMemSubBtn.addEventListener('click', async (e) => {
+    // making sure empty fields are not submited to the database
+    e.preventDefault();
+    // getting the input field values all in one object
+    const memberData = {
+      name: name.value,
+      role: role.value,
+      course: studyProgramme.value,
+      level: level.value,
+      contact: contact.value,
+      attendance: []
+    }
 
-  try {
-    // Creating a collection of members and adding each member details as a document
-    const docRef = await addDoc(collection(db, "members"), memberData)
-    alert(`${memberData.name} Added successfully`);
-  } catch (error) {
-    alert(JSON.stringify(error));
-  }
-  // console.log(name.value)
-  // alert(JSON.stringify(name.value));
-})
+    try {
+      // Creating a collection of members and adding each member details as a document
+      const docRef = await addDoc(collection(db, "members"), memberData)
+      alert(`${memberData.name} Added successfully`);
+    } catch (error) {
+      alert(JSON.stringify(error));
+    }
+    // console.log(name.value)
+    // alert(JSON.stringify(name.value));
+  })
+}
 
-// loging into the system
-loginBtn.addEventListener(`click`, () => {
+// logging into the system
+if (loginBtn) {
+  loginBtn.addEventListener(`click`, async () => {
 
-  // getting the form field values
-  const firstVal = userName.value;
-  const secondVal = userPassword.value;
+    // getting the form field values
+    const firstVal = userName.value;
+    const secondVal = userPassword.value;
 
-  if (authenUser(firstVal, secondVal)) {
-    // if it passes the authentication, then the list page will load
-    window.location.href = 'list.html';
-    // keeping the data into localStorage
-    const data = { firstVal, secondVal };
-    localStorage.setItem(`listData`, JSON.stringify(data));
+    if (await authenUser(firstVal, secondVal)) {
+      // if it passes the authentication, then the list page will load
+      window.location.href = 'list.html';
+      // keeping the data into localStorage
+      const data = { firstVal, secondVal };
+      localStorage.setItem(`listData`, JSON.stringify(data));
 
-    loginForm.style.opacity = 0;
-    loginForm.style.display = `none`;
-  } else {
-    alert("Please Enter a valid authenticationn details");
-  }
-})
-
-const userDataCol = JSON.parse(localStorage.getItem("listData"))
+      loginForm.style.opacity = 0;
+      loginForm.style.display = `none`;
+    } else {
+      alert("Please Enter valid authentication details");
+    }
+  });
+}

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .success {
+            color: green;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .error {
+            color: red;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .info {
+            color: blue;
+            text-align: center;
+            margin-top: 20px;
+        }
+        #console-output {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 15px;
+            margin-top: 20px;
+            font-family: monospace;
+            font-size: 12px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Login Test & Debug</h1>
+        
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username" value="admin">
+        </div>
+        
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" value="admin123">
+        </div>
+        
+        <button onclick="testLogin()">Test Login</button>
+        <button onclick="checkUsers()">Check Users in Database</button>
+        <button onclick="clearConsole()">Clear Console</button>
+        
+        <div id="message"></div>
+        <div id="console-output"></div>
+    </div>
+
+    <script type="module">
+        // Firebase configuration
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+        import { authenUser } from "./import_func.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDMVTwr45d0xPK5He6pv1bibApte1flpds",
+            authDomain: "christian-club-online.firebaseapp.com",
+            projectId: "christian-club-online",
+            storageBucket: "christian-club-online.appspot.com",
+            messagingSenderId: "599223982319",
+            appId: "1:599223982319:web:2aa246d44bae1ddc6ca31a",
+            measurementId: "G-PSCB7CHW3N"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        function log(message) {
+            const consoleOutput = document.getElementById('console-output');
+            const timestamp = new Date().toLocaleTimeString();
+            consoleOutput.innerHTML += `[${timestamp}] ${message}\n`;
+            consoleOutput.scrollTop = consoleOutput.scrollHeight;
+            console.log(message);
+        }
+
+        window.testLogin = async function() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const messageDiv = document.getElementById('message');
+            
+            log(`Testing login with username: ${username}`);
+            
+            try {
+                const result = await authenUser(username, password);
+                log(`Authentication result: ${result}`);
+                
+                if (result) {
+                    messageDiv.innerHTML = '<div class="success">Login successful!</div>';
+                    log('Login test passed');
+                } else {
+                    messageDiv.innerHTML = '<div class="error">Login failed - Invalid credentials</div>';
+                    log('Login test failed - Invalid credentials');
+                }
+            } catch (error) {
+                messageDiv.innerHTML = '<div class="error">Error during login: ' + error.message + '</div>';
+                log(`Login error: ${error.message}`);
+            }
+        };
+
+        window.checkUsers = async function() {
+            const messageDiv = document.getElementById('message');
+            
+            try {
+                log('Checking users in database...');
+                const usersRef = collection(db, "Users");
+                const querySnapshot = await getDocs(usersRef);
+                
+                log(`Found ${querySnapshot.size} users in database`);
+                
+                if (querySnapshot.size === 0) {
+                    messageDiv.innerHTML = '<div class="info">No users found in database. Please create a test user first.</div>';
+                } else {
+                    let userList = '<div class="info">Users in database:</div>';
+                    querySnapshot.forEach((doc) => {
+                        const userData = doc.data();
+                        log(`User: ${userData.username} (Role: ${userData.role})`);
+                        userList += `<div class="info">- ${userData.username} (${userData.role})</div>`;
+                    });
+                    messageDiv.innerHTML = userList;
+                }
+            } catch (error) {
+                messageDiv.innerHTML = '<div class="error">Error checking users: ' + error.message + '</div>';
+                log(`Error checking users: ${error.message}`);
+            }
+        };
+
+        window.clearConsole = function() {
+            document.getElementById('console-output').innerHTML = '';
+            document.getElementById('message').innerHTML = '';
+        };
+
+        // Initialize
+        log('Login test page loaded');
+        log('Firebase initialized successfully');
+    </script>
+</body>
+</html>
