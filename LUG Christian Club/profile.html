@@ -1,141 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile - Christian Club Online</title>
-    <link rel="stylesheet" href="style_profile.css">
+    <link rel="stylesheet" href="style_index.css">
     <!-- import fonts from google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kavoon&family=Livvic:wght@400;700&display=swap" rel="stylesheet">
     <!-- import icons from google -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
 </head>
+
 <body>
-    <div class="profile-container">
-        <!-- Sidebar -->
-        <div class="sidebar">
-            <div class="logo">
-                <img src="list_docs/img/logo.png" alt="Christian Club Logo">
+    <header>
+        <!-- Christian Club logo -->
+        <div class="logo" id="logoA">
+            <img src="list_docs/img/logo.png" alt="Christian Club Logo">
+        </div>
+        <!-- Heading texts under logo -->
+        <div class="heading">
+            <h1 class="kavoon-font">Christian Club Online</h1>
+            <p class="livvic-font">Welcome to Christian Club Online</p>
+        </div>
+    </header>
+    <main>
+        <!-- Options Division -->
+        <div class="menu">
+            <!-- New Members Option Div -->
+            <div class="menu-item">
+                <img src="list_docs/img/newmem.png" alt="Add New Member Icon">
+                <!--Including id to enable button -->
+                <button id="addmem-button">Add New Member</button>
             </div>
-            <div class="nav-buttons">
-                <button class="nav-button" id="home-button">
-                    <i class="material-symbols-outlined">home</i>
-                    <span>Home</span>
-                </button>
-                <button class="nav-button" id="members-button">
-                    <i class="material-icons">group</i>
-                    <span>Members</span>
-                </button>
-                <button class="nav-button active" id="profile-button">
-                    <i class="material-icons">person</i>
-                    <span>Profile</span>
-                </button>
-                <button class="nav-button logout-button" id="logout-button">
-                    <i class="material-icons">logout</i>
-                    <span>Logout</span>
-                </button>
+            <!-- Members List Option Div -->
+            <div class="menu-item">
+                <img src="list_docs/img/memlist.png" alt="Members List Icon">
+                <button id="list-button">Members List</button>
+            </div>
+            <!-- Login Option Div -->
+            <div class="menu-item">
+                <img src="list_docs/img/login.png" alt="Login Icon">
+                <button id="login-button-index">Login</button>
             </div>
         </div>
-
-        <!-- Main Content -->
-        <div class="main-content">
-            <div class="profile-header">
-                <h1>User Profile</h1>
-                <p>Manage your account information</p>
+    </main>
+    <!-- Login overlay form -->
+    <div class="forms-container" id="login-form">
+        <div class="log">
+            <!-- Exit Button for the form -->
+            <div class="exit-icon">
+                <i class="material-icons" id="exit-login-icon">close</i>
             </div>
-
-            <div class="profile-content">
-                <!-- Profile Info Card -->
-                <div class="profile-card">
-                    <div class="profile-avatar">
-                        <i class="material-icons">account_circle</i>
-                    </div>
-                    <div class="profile-info">
-                        <h2 id="user-name">Admin User</h2>
-                        <p id="user-role">Administrator</p>
-                        <p id="user-email">admin@christianclub.com</p>
-                    </div>
+            <div class="container">
+                <!-- Christian Club logo -->
+                <div class="logo">
+                    <img src="list_docs/img/logo.png" alt="Christian Club Logo">
                 </div>
-
-                <!-- Account Settings -->
-                <div class="settings-card">
-                    <h3>Account Settings</h3>
-                    <div class="setting-item">
-                        <label>Username</label>
-                        <input type="text" id="username-input" value="admin" readonly>
-                        <button class="edit-btn" onclick="editField('username-input')">
-                            <i class="material-icons">edit</i>
-                        </button>
-                    </div>
-                    <div class="setting-item">
-                        <label>Email</label>
-                        <input type="email" id="email-input" value="admin@christianclub.com">
-                        <button class="edit-btn" onclick="editField('email-input')">
-                            <i class="material-icons">edit</i>
-                        </button>
-                    </div>
-                    <div class="setting-item">
-                        <label>Role</label>
-                        <select id="role-select">
-                            <option value="admin">Administrator</option>
-                            <option value="moderator">Moderator</option>
-                            <option value="member">Member</option>
-                        </select>
-                    </div>
+                <div class="logtitle">
+                    <span>Login</span>
                 </div>
-
-                <!-- Security Settings -->
-                <div class="settings-card">
-                    <h3>Security</h3>
-                    <div class="setting-item">
-                        <label>Current Password</label>
-                        <input type="password" id="current-password" placeholder="Enter current password">
-                    </div>
-                    <div class="setting-item">
-                        <label>New Password</label>
-                        <input type="password" id="new-password" placeholder="Enter new password">
-                    </div>
-                    <div class="setting-item">
-                        <label>Confirm Password</label>
-                        <input type="password" id="confirm-password" placeholder="Confirm new password">
-                    </div>
-                    <button class="save-btn" onclick="changePassword()">Change Password</button>
+                <div id="Login">
+                    <label for="Username">Username</label>
+                    <br>
+                    <input type="text" id="Username" name="Username">
                 </div>
-
-                <!-- Activity Summary -->
-                <div class="settings-card">
-                    <h3>Activity Summary</h3>
-                    <div class="activity-stats">
-                        <div class="stat-item">
-                            <i class="material-icons">group_add</i>
-                            <div>
-                                <h4 id="members-added">0</h4>
-                                <p>Members Added</p>
-                            </div>
-                        </div>
-                        <div class="stat-item">
-                            <i class="material-icons">event</i>
-                            <div>
-                                <h4 id="attendance-sessions">0</h4>
-                                <p>Attendance Sessions</p>
-                            </div>
-                        </div>
-                        <div class="stat-item">
-                            <i class="material-icons">schedule</i>
-                            <div>
-                                <h4 id="last-login">Today</h4>
-                                <p>Last Login</p>
-                            </div>
-                        </div>
-                    </div>
+                <div class="Login">
+                    <label for="password"> Password</label>
+                    <br>
+                    <input type="password" name="password" id="password">
                 </div>
+                <button class="Login" type="submit" id="button2">Login</button>
             </div>
         </div>
     </div>
 
-    <script type="module" src="script_profile.js"></script>
+    <!-- Ernests form -->
+    <div class="forms-container" id="addmem-form">
+        <div class="add">
+            <!-- Exit Button for the form -->
+            <div class="exit-icon">
+                <i class="material-icons" id="exit-addmem-icon">close</i>
+            </div>
+            <div class="containerB">
+                <span id="memhead">Member Addition</span>
+                <form id="dataForm">
+                    <label for="name" id="label">Please enter the member's name.</label>
+                    <input class="input" type="text" id="name" name="name" required>
+                    <br>
+                    <label for="role" id="label">Please enter their role within the group.</label>
+                    <input class="input" type="text" id="role" name="role" required>
+                    <br>
+                    <label for="studyProgramme" id="label">Please select their programme of study.</label>
+                    <select id="studyProgramme" name="studyProgramme" required>
+                        <option value="economics">BA Economics and International Relations</option>
+                        <option value="politics">BA Politics and International Relations</option>
+                        <option value="accounting">BSc Accounting and Fincance</option>
+                        <option value="compsci">BSc Computer Science</option>
+                        <option value="business">BSc Business Management</option>
+                        <option value="marketing">BSc Marketing</option>
+                        <option value="law">LLB Law</option>
+                    </select>
+                    <br>
+                    <label for="level" id="label">Please enter their university level.</label>
+                    <select id="level" name="level" required>
+                        <option value="fdn">Foundation Programme</option>
+                        <option value="100">100-Level</option>
+                        <option value="200">200-Level</option>
+                        <option value="300">300-Level</option>
+                    </select>
+                    <br>
+                    <label for="contact" id="label">Please enter their WhatsApp contact details.</label>
+                    <input class="input" type="text" id="contact" name="contact" required>
+                    <br>
+                    <button type="submit" class="submit_button" id="mem-sub-button">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- including Firebase JS SDK bootstrap and app logic -->
+    <script type="module" src="firebase.js"></script>
 </body>
+
 </html>
