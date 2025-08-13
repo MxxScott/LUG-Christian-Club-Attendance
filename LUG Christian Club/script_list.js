@@ -1,28 +1,11 @@
 // firebase configurations
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
-//  adding firestore 
-import { getFirestore, collection, doc, addDoc, getDocs, query, where, arrayUnion, updateDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"
+// Import Firestore utilities and reuse the shared app/db instance
+import { collection, doc, addDoc, getDocs, query, where, arrayUnion, updateDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"
+import { db } from "./firebase.js";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyDMVTwr45d0xPK5He6pv1bibApte1flpds",
-  authDomain: "christian-club-online.firebaseapp.com",
-  projectId: "christian-club-online",
-  storageBucket: "christian-club-online.appspot.com",
-  messagingSenderId: "599223982319",
-  appId: "1:599223982319:web:2aa246d44bae1ddc6ca31a",
-  measurementId: "G-PSCB7CHW3N"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-const db = getFirestore(app);
+// Using shared Firebase `db` from firebase.js to avoid multiple initializations
 
 //importing necessary functions
 import { authenUser, dynamicCreate, debouncing } from "./import_func.js";
@@ -30,7 +13,7 @@ import { authenUser, dynamicCreate, debouncing } from "./import_func.js";
 const loginBtn = document.getElementById(`button2`);
 const userName = document.getElementById("Username");
 const userPassword = document.getElementById("password");
-const addMemSubBtn = document.getElementById(`mem-sub-button`);
+const addMemSubBtn = document.getElementById(`mem-sub-butn`);
 const name = document.getElementById(`name`);
 const role = document.getElementById(`role`);
 const studyProgramme = document.getElementById(`studyProgramme`);
@@ -279,6 +262,7 @@ exitAddMemIcon.addEventListener(`click`, () => {
 });
 
 // adding a member to the database
+if (addMemSubBtn) {
 addMemSubBtn.addEventListener('click', async (e) => {
   // making sure empty fields are not submited to the database
   e.preventDefault();
@@ -303,6 +287,7 @@ addMemSubBtn.addEventListener('click', async (e) => {
   // console.log(name.value)
   // alert(JSON.stringify(name.value));
 })
+}
 
 
 // ********************************************
